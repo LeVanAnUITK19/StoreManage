@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Store.Models
 {
-    internal class Class1
+   public class VaiTro
     {
+        public string MaVT { get; set; }
+        public string TenVT { get; set; }
+        public VaiTro() { }
     }
 }
