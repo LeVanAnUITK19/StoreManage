@@ -10,15 +10,15 @@ namespace Store.Models
     {
         public int       MaUser { get; set; }
         public string    TenDangNhap { get; set; }
-        public string    TenUser { get; set; }
+        public string    HoTen { get; set; }
         public string    MatKhau { get; set; }
-        public string    EmailUser { get; set; }
-        public string    SDTUser { get; set; }
-        public string    DiaChiUser { get; set; }
-        public string    GioiTinhUser { get; set; }
-        public DateOnly  NgaySinhUser { get; set; }
-        public string    HinhAnhUser { get; set; }
-        public string    MaVT { get; set; }
+        public string    Email { get; set; }
+        public string    SDT { get; set; }
+        public string    DiaChi { get; set; }
+        public string    GioiTinh { get; set; }
+        public DateTime? NgaySinh { get; set; }
+        public string    HinhAnh { get; set; }
+        public string MaVT { get; set; } = "VT01";
 
 
         public  User() {}

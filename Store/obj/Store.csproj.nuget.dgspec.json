@@ -74,9 +74,17 @@
               "target": "Package",
               "version": "[8.2.1, )"
             },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.66, )"
+            },
             "LiveChartsCore.SkiaSharpView.Avalonia": {
               "target": "Package",
               "version": "[2.0.0-rc6.1, )"
+            },
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.10, )"
             },
             "Svg.Controls.Skia.Avalonia": {
               "target": "Package",

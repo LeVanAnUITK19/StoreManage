@@ -2,13 +2,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+        xmlns:vm="clr-namespace:Store.ViewModels"
+        mc:Ignorable="d"
+       
         x:Class="Store.RegisterWindowView"
         Title="RegisterWindowView"
-		Width="1000"
-		Height="700"
-		Background="White"
-		WindowStartupLocation="CenterScreen">
+        Width="1000"
+        Height="700"
+        Background="White"
+        WindowStartupLocation="CenterScreen">
+	
 	<Border BorderBrush="Black" BorderThickness="5">
 		<Grid ColumnDefinitions="300, 700">
 			<!--Phần 1-->
@@ -20,7 +23,7 @@
 					Height="250" 
 					Width="250"
 					Margin="25,120,25,0">
-					<Image></Image>
+					<Image Source="{Binding HinhAnh, Mode=TwoWay}" Stretch="UniformToFill"></Image>
 				</Border>
 				<Button
 					Classes="style3"
@@ -43,7 +46,7 @@
 				<StackPanel
 					Orientation="Horizontal"
 					Margin="0,20,0,20">
-					<TextBox
+					<TextBox Text="{Binding TenDangNhap, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 						FontSize="20"
 						Watermark="Tên đăng nhập"
 						Foreground="black"
@@ -53,7 +56,7 @@
 						VerticalAlignment="Center"
 						Margin="0,0,50,0">
 					</TextBox>
-					<TextBox
+					<TextBox Text="{Binding MatKhau, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 						FontSize="20"
 						Watermark="Mật khẩu"
 						Foreground="black"
@@ -66,7 +69,7 @@
 				<StackPanel
 					Orientation="Horizontal"
 					Margin="0,20,0,20">
-					<TextBox
+					<TextBox Text="{Binding HoTen, Mode= TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 						FontSize="20"
 						Watermark="Họ Tên"
 						Foreground="black"
@@ -76,7 +79,7 @@
 						VerticalAlignment="Center"
 						Margin="0,0,50,0">
 					</TextBox>
-					<ComboBox 
+					<ComboBox	SelectedItem="{Binding GioiTinh, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 						Height="60"
 						Width="300"
 						PlaceholderText="Chọn giới tính"
@@ -90,7 +93,7 @@
 				<StackPanel
 					Orientation="Horizontal"
 					Margin="0,20,0,20">
-					<CalendarDatePicker
+					<CalendarDatePicker SelectedDate="{Binding NgaySinh, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 						FontSize="20"
 						Height="60"
 						Width="300"
@@ -98,7 +101,7 @@
 						Margin="0,0,50,0"
 						Foreground="black">
 					</CalendarDatePicker>
-					<TextBox
+					<TextBox Text="{Binding SDT, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 						FontSize="20"
 						Watermark="Số điện thoại"
 						Foreground="black"
@@ -108,7 +111,7 @@
 						VerticalAlignment="Center">
 					</TextBox>
 				</StackPanel>
-				<TextBox
+				<TextBox Text="{Binding Email, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 						FontSize="20"
 						Watermark="Email"
 						Foreground="black"
@@ -118,7 +121,7 @@
 						VerticalAlignment="Center"
 						Margin="0,20,50, 20">
 				</TextBox>
-				<TextBox
+				<TextBox Text="{Binding DiaChi, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 						FontSize="20"
 						Watermark="Địa chỉ"
 						Foreground="black"
@@ -128,7 +131,7 @@
 						VerticalAlignment="Center"
 						Margin="0,20,50, 20">
 				</TextBox>
-				<Button
+				<Button Command="{Binding DangKyButtonCommand}"
 					Classes="style3"
 					Width="650"
 					Margin="0,20,0,0">

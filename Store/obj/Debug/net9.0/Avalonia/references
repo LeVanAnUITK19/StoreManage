@@ -23,6 +23,7 @@ C:\Users\Admin\.nuget\packages\avalonia.win32\11.3.6\lib\net8.0\Avalonia.Win32.A
 C:\Users\Admin\.nuget\packages\avalonia.win32\11.3.6\lib\net8.0\Avalonia.Win32.dll
 C:\Users\Admin\.nuget\packages\avalonia.x11\11.3.6\lib\net8.0\Avalonia.X11.dll
 C:\Users\Admin\.nuget\packages\communitytoolkit.mvvm\8.2.1\lib\net6.0\CommunityToolkit.Mvvm.dll
+C:\Users\Admin\.nuget\packages\dapper\2.1.66\lib\net8.0\Dapper.dll
 C:\Users\Admin\.nuget\packages\excss\4.3.1\lib\net8.0\ExCSS.dll
 C:\Users\Admin\.nuget\packages\harfbuzzsharp\8.3.1.1\lib\net8.0\HarfBuzzSharp.dll
 C:\Users\Admin\.nuget\packages\livechartscore\2.0.0-rc6.1\lib\net8.0\LiveChartsCore.dll
@@ -30,6 +31,7 @@ C:\Users\Admin\.nuget\packages\livechartscore.skiasharpview.avalonia\2.0.0-rc6.1
 C:\Users\Admin\.nuget\packages\livechartscore.skiasharpview\2.0.0-rc6.1\lib\net8.0\LiveChartsCore.SkiaSharpView.dll
 C:\Users\Admin\.nuget\packages\microcom.runtime\0.11.0\lib\net5.0\MicroCom.Runtime.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\9.0.8\ref\net9.0\Microsoft.CSharp.dll
+C:\Users\Admin\.nuget\packages\microsoft.data.sqlite.core\9.0.10\lib\net8.0\Microsoft.Data.Sqlite.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\9.0.8\ref\net9.0\Microsoft.VisualBasic.Core.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\9.0.8\ref\net9.0\Microsoft.VisualBasic.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\9.0.8\ref\net9.0\Microsoft.Win32.Primitives.dll
@@ -39,6 +41,9 @@ C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\9.0.8\ref\net9.0\netstan
 C:\Users\Admin\.nuget\packages\shimskiasharp\3.2.1\lib\net8.0\ShimSkiaSharp.dll
 C:\Users\Admin\.nuget\packages\skiasharp\2.88.9\lib\net6.0\SkiaSharp.dll
 C:\Users\Admin\.nuget\packages\skiasharp.harfbuzz\2.88.9\lib\net6.0\SkiaSharp.HarfBuzz.dll
+C:\Users\Admin\.nuget\packages\sqlitepclraw.bundle_e_sqlite3\2.1.10\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll
+C:\Users\Admin\.nuget\packages\sqlitepclraw.core\2.1.10\lib\netstandard2.0\SQLitePCLRaw.core.dll
+C:\Users\Admin\.nuget\packages\sqlitepclraw.provider.e_sqlite3\2.1.10\lib\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
 C:\Users\Admin\.nuget\packages\svg.controls.skia.avalonia\11.3.6.2\lib\net8.0\Svg.Controls.Skia.Avalonia.dll
 C:\Users\Admin\.nuget\packages\svg.custom\3.2.1\lib\net8.0\Svg.Custom.dll
 C:\Users\Admin\.nuget\packages\svg.model\3.2.1\lib\net8.0\Svg.Model.dll

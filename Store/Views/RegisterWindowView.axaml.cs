@@ -9,7 +9,11 @@ public partial class RegisterWindowView : Window
 {
     public RegisterWindowView()
     {
-        InitializeComponent();
         DataContext = new RegisterWindowViewModel();
+        InitializeComponent();
+    }
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
     }
 }
