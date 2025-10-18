@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <ApplicationManifest>app.manifest</ApplicationManifest>
-        <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     </PropertyGroup>
 
     <ItemGroup>
@@ -35,5 +35,11 @@
 
     <ItemGroup>
       <AdditionalFiles Include="Styles\Styles.axaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AvaloniaResource Update="Assets\images\Anh_Mau2.jpg">
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      </AvaloniaResource>
     </ItemGroup>
 </Project>

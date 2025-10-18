@@ -11,7 +11,7 @@ using Store.Views;
 
 namespace Store.ViewModels
 {
-    public partial  class RegisterWindowViewModel : ViewModelBase
+    public partial class RegisterWindowViewModel : ViewModelBase
     {
         [ObservableProperty] private string tenDangNhap;
         [ObservableProperty] private string matKhau;
@@ -22,6 +22,8 @@ namespace Store.ViewModels
         [ObservableProperty] private DateTime? ngaySinh = DateTime.Now;
         [ObservableProperty] private string gioiTinh = "Nam";
         [ObservableProperty] private string hinhAnh = "avares://Store/Assets/images/Anh_Mau.jpg";
+
+        
 
         [RelayCommand]
         public void DangKyButton()
@@ -54,6 +56,7 @@ namespace Store.ViewModels
             }
 
         }
+        
     }
 }
 

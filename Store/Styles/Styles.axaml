@@ -1,4 +1,4 @@
-<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Padding="20">
             <!--  Add Controls for Previewer Here  -->
@@ -6,6 +6,12 @@
                 <Button Classes="style1">test button</Button>
                 <Button Classes="style2">test button 2</Button>
 				<Button Classes="style3">test button 3</Button>
+                <TextBox Classes="style4"/>
+                <ComboBox Classes="style5"/>
+                <Button Classes="style6">Tạo</Button>
+                <TextBlock Classes="style7">test text block 2</TextBlock>
+                <TextBox Classes="style8">test </TextBox>
+                <StackPanel Classes="style9"></StackPanel>
                 <TextBox>test_text_block</TextBox>
             </StackPanel>
         </Border>
@@ -77,5 +83,87 @@
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Background" Value="#3E68E6"/>
 	</Style>
+
+    <Style Selector="TextBox.style4">
+      <Setter Property="Background" Value="white"/>
+      <Setter Property="FontSize" Value="25"/>
+      <Setter Property="Height" Value="60"/>
+      <Setter Property="Width" Value="200"/>
+      <Setter Property="BorderBrush" Value="Black"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      <Setter Property="Watermark" Value="Tìm kiếm"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="HorizontalAlignment" Value="Center"/>
+      <Setter Property="Foreground" Value="Black"/>
+  </Style>
+  <Style Selector="ComboBox.style5">
+      <Setter Property="Background" Value="White"/>
+      <Setter Property="PlaceholderText" Value="Bộ lọc"/>
+      <Setter Property="PlaceholderForeground" Value="Black"/>
+      <Setter Property="FontSize" Value="25"/>
+      <Setter Property="Height" Value="60"/>
+      <Setter Property="Width" Value="200"/>
+      <Setter Property="BorderBrush" Value="Black"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      <Setter Property="Foreground" Value="Black"/>
+  </Style>
+  <Style Selector="Button.style6">
+       <Setter Property="Background">
+            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                <GradientStop Color="Red" Offset="0" />
+                <GradientStop Color="#FF5B5B" Offset="1" />
+            </LinearGradientBrush>
+        </Setter>
+	  <Setter Property="FontSize" Value="25"/>
+      <Setter Property="Height" Value="60"/>
+      <Setter Property="Width" Value="200"/>
+      <Setter Property="BorderBrush" Value="Black"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center" />
+      <Setter Property="VerticalContentAlignment" Value="Center" />
+      <Setter Property="FontWeight" Value="Bold"/>
+  </Style>
+  <Style Selector="TextBlock.style7">
+	  <Setter Property="FontSize" Value="25"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="Foreground" Value="Black"/>
+      <Setter Property="TextAlignment" Value="Center"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="HorizontalAlignment" Value="Center"/>
+  </Style>
+  <Style Selector="TextBox.style8">
+      <Setter Property="Background" Value="white"/>
+      <Setter Property="FontSize" Value="25"/>
+      <Setter Property="Height" Value="60"/>
+      <Setter Property="Width" Value="200"/>
+      <Setter Property="BorderBrush" Value="Black"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+      <Setter Property="Foreground" Value="Black"/>	  
+  </Style>
+  <Style Selector="StackPanel.style9">
+      <Setter Property="Background">
+            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                <GradientStop Color="#81A3D8" Offset="0" />
+                <GradientStop Color="#0E80C7" Offset="1" />
+            </LinearGradientBrush>
+        </Setter>
+  </Style>
+  <Style Selector="Border.style10">
+    <Setter Property="Background">
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+            <GradientStop Color="#68C1F0" Offset="0"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Setter>
+</Style>
+   
+  
 	
 </Styles>

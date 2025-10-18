@@ -2,17 +2,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:Store.ViewModels"
+		xmlns:vm="clr-namespace:Store.ViewModels"
         mc:Ignorable="d"
-       
-        x:Class="Store.RegisterWindowView"
+        x:Class="Store.Views.RegisterWindowView"
+		x:DataType="vm:RegisterWindowViewModel"
         Title="RegisterWindowView"
         Width="1000"
         Height="700"
         Background="White"
         WindowStartupLocation="CenterScreen">
-	
-	<Border BorderBrush="Black" BorderThickness="5">
+	<Design.DataContext>
+		<vm:RegisterWindowViewModel/>
+		</Design.DataContext>
+	<Border>
 		<Grid ColumnDefinitions="300, 700">
 			<!--Phần 1-->
 			<StackPanel Grid.Column="0">
@@ -25,7 +27,7 @@
 					Margin="25,120,25,0">
 					<Image Source="{Binding HinhAnh, Mode=TwoWay}" Stretch="UniformToFill"></Image>
 				</Border>
-				<Button
+				<Button 
 					Classes="style3"
 					Height="80"
 					Width="250"

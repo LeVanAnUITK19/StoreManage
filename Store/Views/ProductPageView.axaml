@@ -1,13 +1,77 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             xmlns:vm = "clr-namespace:Store.ViewModels"
-             x:DataType="vm:ProductPageViewModel"
-             x:Class="Store.Views.ProductPageView">
-    <Design.DataContext>
-        <vm:ProductPageViewModel/>
-    </Design.DataContext>
-    <Label Content="{Binding Product}"></Label>
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 mc:Ignorable="d"
+			 d:DesignWidth="1000" d:DesignHeight="700"
+			 xmlns:vm="clr-namespace:Store.ViewModels"
+			 x:DataType="vm:ProductPageViewModel"
+			 x:Class="Store.Views.ProductPageView"
+			 Background="White">
+
+	<Design.DataContext>
+		<vm:ProductPageViewModel/>
+	</Design.DataContext>
+
+	<Border CornerRadius="20" Background="#D9D9D9" BorderBrush="Black" BorderThickness="2" Margin="10">
+		<Grid RowDefinitions="Auto,*">
+
+			<!-- Khu chức năng -->
+			<StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+				<ComboBox Classes="style5" Width="200" Margin="0,0,10,0">
+					<ComboBoxItem Content="Quần dài"/>
+					<ComboBoxItem Content="Quần ngắn"/>
+					<ComboBoxItem Content="Quần jean"/>
+					<ComboBoxItem Content="Áo khoác"/>
+				</ComboBox>
+
+				<ComboBox Classes="style5" Width="150" Margin="0,0,10,0" PlaceholderText="Chi tiết">
+					<ComboBoxItem Content="Tên SP"/>
+					<ComboBoxItem Content="Giá"/>
+				</ComboBox>
+
+				<TextBox Classes="style4" Width="350" Margin="0,0,120,0"/>
+
+				<Button Classes="style6" Height="60" Width="100" Content="Thêm"/>
+			</StackPanel>
+
+			<!-- Danh sách sản phẩm -->
+			<Border Grid.Row="1" BorderBrush="black" BorderThickness="1" Width="900" Height="580" Margin="20,0,20,20">
+				<ScrollViewer VerticalScrollBarVisibility="Auto">
+					<ItemsControl ItemsSource="{Binding SanPhams}">
+						<!-- WrapPanel để sắp xếp các thẻ sản phẩm -->
+						<ItemsControl.ItemsPanel>
+							<ItemsPanelTemplate>
+								<WrapPanel Orientation="Horizontal"/>
+							</ItemsPanelTemplate>
+						</ItemsControl.ItemsPanel>
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<Border Margin="10" Width="200" Height="250"
+										Background="White" BorderBrush="black"
+										BorderThickness="1" CornerRadius="10" Padding="5">
+									<StackPanel>
+										<Image Height="180" Width="180"
+											   Source="{Binding HinhAnhSP}" Stretch="UniformToFill"/>
+
+										<TextBlock Classes="style7" Height="30"
+												   Text="{Binding TenSP}" FontSize="15"
+												   TextAlignment="Center"/>
+
+										<TextBlock Classes="style7" TextAlignment="Center" FontSize="15">
+											<Run Text="{Binding GiaSP}"/>
+											<Run Text=" VND ("/>
+											<Run Text="{Binding SoLuongSP}"/>
+											<Run Text=")"/>
+										</TextBlock>
+									</StackPanel>
+								</Border>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+				</ScrollViewer>
+			</Border>
+
+		</Grid>
+	</Border>
 </UserControl>
