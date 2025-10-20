@@ -23,10 +23,8 @@ namespace Store.ViewModels
 
         public CreateBillWindowViewModel()
         {
-            // Thêm dữ liệu mẫu
-            sanPhams.Add(new SanPham { MaSP = 1, TenSP = "Bánh mì", KichThuocSP = "M", SoLuongSP = 10, GiaSP = 100000 });
-            sanPhams.Add(new SanPham { MaSP = 2, TenSP = "Sữa tươi", KichThuocSP = "Đồ uống", SoLuongSP = 15, GiaSP = 30000 });
-            sanPhams.Add(new SanPham { MaSP = 3, TenSP = "Cà phê", KichThuocSP = "Đồ uống", SoLuongSP = 25, GiaSP = 50000 });
+            
+           
         }
     }
 }

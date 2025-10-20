@@ -1,16 +1,21 @@
 ﻿using Avalonia;
 using System;
+using Store.Services; // ✅ thêm dòng này
 
 namespace Store;
 
 sealed class Program
 {
-    // Initialization code. Don't use any Avalonia, third-party APIs or any
-    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
-    // yet and stuff might break.
     [STAThread]
-    public static void Main(string[] args) => BuildAvaloniaApp()
-        .StartWithClassicDesktopLifetime(args);
+    public static void Main(string[] args)
+    {
+        // ✅ Khởi tạo CSDL (tạo file store.db + bảng nếu chưa có)
+        DatabaseService.Initialize();
+
+        // ✅ Sau đó mới khởi chạy ứng dụng
+        BuildAvaloniaApp()
+            .StartWithClassicDesktopLifetime(args);
+    }
 
     // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaApp()

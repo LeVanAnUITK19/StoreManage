@@ -12,6 +12,8 @@
 				<TextBlock Classes="style7">test text block 2</TextBlock>
 				<TextBox Classes="style8">test </TextBox>
 				<StackPanel Classes="style9"></StackPanel>
+				<Border Classes="style10"></Border>
+				<NumericUpDown Classes="style11"></NumericUpDown>
 				<TextBox>test_text_block</TextBox>
 			</StackPanel>
 		</Border>
@@ -149,7 +151,7 @@
 		<Setter Property="HorizontalAlignment" Value="Center"/>
 	</Style>
 	<!--Style textbox8-->
-	<Style Selector="TextBox.style8">
+	<Style Selector="TextBox.style8" >
 		<Setter Property="Background" Value="white"/>
 		<Setter Property="FontSize" Value="25"/>
 		<Setter Property="Height" Value="60"/>
@@ -180,6 +182,17 @@
 		</Setter>
 	</Style>
 
-
+	<Style Selector="NumericUpDown.style11" >
+		<Setter Property="Background" Value="white"/>
+		<Setter Property="FontSize" Value="25"/>
+		<Setter Property="Height" Value="60"/>
+		<Setter Property="Width" Value="200"/>
+		<Setter Property="BorderBrush" Value="Black"/>
+		<Setter Property="BorderThickness" Value="2"/>
+		<Setter Property="CornerRadius" Value="5"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+		<Setter Property="HorizontalAlignment" Value="Left"/>
+		<Setter Property="Foreground" Value="Black"/>
+</Style>
 
 </Styles>

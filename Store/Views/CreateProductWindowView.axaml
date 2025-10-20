@@ -1,43 +1,70 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="using:Store.ViewModels"
-        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="900"
-        Height="900"
-        Width="1000"
-        Background="#D9D9D9"
-        WindowStartupLocation="CenterScreen"
-        x:Class="Store.CreateProductWindowView"
-        x:DataType="vm:CreateProductWindowViewModel"
+﻿<Window xmlns="https://github.com/avaloniaui" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:vm="using:Store.ViewModels" mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="800" 
+        Height="800" 
+        Width="1000" 
+        Background="white" 
+        WindowStartupLocation="CenterScreen" 
+        x:Class="Store.CreateProductWindowView" 
+        x:DataType="vm:CreateProductWindowViewModel" 
         Title="Create Product">
-        <Grid ColumnDefinitions="450,550">
-			<StackPanel Grid.Column="0" Orientation="Vertical" Margin="50">
-                <Image Height="400" Width="400"></Image>
-            </StackPanel>
-            <StackPanel Grid.Column="1" Orientation="Vertical">
-				<TextBlock Classes="style7" FontSize="35" HorizontalAlignment="Center" Margin="0,30,0,10">Sản phẩm mới</TextBlock>
-                <StackPanel Orientation="Horizontal"> 
-                   <StackPanel Orientation="Vertical" Margin="10,0,20,0">
-                        <TextBlock Classes="style7" FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,0" TextAlignment="Left">Mã sản phẩm:</TextBlock>
-                        <TextBox Classes="style8" Width="250" Margin="0,0,0,0"/>
-                   </StackPanel>
-                   <StackPanel Orientation="Vertical" Margin="0,0,20,0">
-                        <TextBlock Classes="style7" FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,0" TextAlignment="Left">Tên sản phẩm:</TextBlock>
-                        <TextBox Classes="style8" Width="250" Margin="0,0,0,0"/>
-                   </StackPanel>
+  
+    <Grid ColumnDefinitions="450,550">
+        <!-- Cột 1: Hình ảnh -->
+        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="25,200,25,200">
+            <Border Background="White" CornerRadius="20" BoxShadow="0 0 3 3 gray" Width="400" Height="400" Padding="7">
+                <Image Source="{Binding HinhAnhDuongDan}" Stretch="UniformToFill"/>
+            </Border>
+        </StackPanel>
+
+        <!-- Cột 2: Thông tin sản phẩm -->
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <TextBlock Classes="style7" FontSize="35" HorizontalAlignment="Center" Margin="0,30,0,10">Sản phẩm mới</TextBlock>
+
+            <!-- Mã & Tên sản phẩm -->
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Margin="10,0,20,0">
+                    <TextBlock Classes="style7" FontSize="20" Text="Mã sản phẩm:" Margin="0,20,0,0"/>
+                    <TextBox Text="{Binding MaSP}" IsReadOnly="True" Classes="style8" Width="250"/>
                 </StackPanel>
-                 <StackPanel Orientation="Horizontal"> 
-                   <StackPanel Orientation="Vertical" Margin="10,0,20,0">
-                        <TextBlock Classes="style7" FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,0" TextAlignment="Left">Giá sản phẩm:</TextBlock>
-                        <TextBox Classes="style8" Width="250" Margin="0,0,0,0"/>
-                   </StackPanel>
-                   <StackPanel Orientation="Vertical" Margin="0,0,20,0">
-                        <TextBlock Classes="style7" FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,0" TextAlignment="Left">Mã sản phẩm:</TextBlock>
-                        <TextBox Classes="style8" Width="250" Margin="0,0,0,0"/>
-                   </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                    <TextBlock Classes="style7" FontSize="20" Text="Tên sản phẩm:" Margin="0,20,0,0"/>
+                    <TextBox Text="{Binding TenSP, Mode=TwoWay}" Classes="style8" Width="250"/>
                 </StackPanel>
             </StackPanel>
 
-        </Grid>
+            <!-- Giá & Loại -->
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Margin="10,0,20,0">
+                    <TextBlock Classes="style7" FontSize="20" Text="Giá sản phẩm:" Margin="0,20,0,0"/>
+                    <NumericUpDown Text="{Binding GiaSP, Mode=TwoWay}" Classes="style11" FormatString="0" Minimum="1000" IsReadOnly="False" Value="1000" Increment="1000" Width="250"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                    <TextBlock Classes="style7" FontSize="20" Text="Loại sản phẩm:" Margin="0,20,0,0"/>
+                    <ComboBox ItemsSource="{Binding DanhSachLoaiSP}"  SelectedItem="{Binding LoaiSP, Mode=TwoWay}" Classes="style5" Width="250"></ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Số lượng & Kích cỡ -->
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Margin="10,0,20,0">
+                    <TextBlock Classes="style7" FontSize="20" Text="Số lượng:" Margin="0,20,0,0"/>
+                    <NumericUpDown Text="{Binding SoLuongSP, Mode=TwoWay}" Classes="style11" FormatString="0"  Value="1" Minimum="1" Width="250"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="0,0,20,0">
+                    <TextBlock Classes="style7" FontSize="20" Text="Kích cỡ:" Margin="0,20,0,0"/>
+                    <ComboBox ItemsSource="{Binding DanhSachKichThuocSP}" SelectedItem="{Binding KichThuocSP, Mode=TwoWay}" Classes="style5" Width="250"></ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Mô tả -->
+            <TextBlock Classes="style7" FontSize="20" Margin="10,20,0,0" Text="Thông tin sản phẩm:"/>
+            <TextBox Text="{Binding MoTaSP, Mode=TwoWay}" Classes="style8" Width="520" Height="200" Margin="10,0,0,0" AcceptsReturn="True" TextWrapping="Wrap"/>
+
+            <!-- Nút tạo sản phẩm -->
+            <Button Classes="style6" Height="60" Width="200" HorizontalAlignment="Center" Margin="0,40,0,0" Command="{Binding TaoSanPhamCommand}">Tạo sản phẩm</Button>
+        </StackPanel>
+    </Grid>
 </Window>

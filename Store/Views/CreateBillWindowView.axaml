@@ -8,7 +8,7 @@
         d:DesignHeight="900"
         Height="900"
         Width="900"
-        Background="#D9D9D9"
+        Background="white"
         WindowStartupLocation="CenterScreen"
         x:Class="Store.Views.CreateBillWindowView"
         x:DataType="vm:CreateBillWindowViewModel"

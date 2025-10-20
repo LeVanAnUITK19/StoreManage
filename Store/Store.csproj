@@ -13,6 +13,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <AvaloniaResource Remove="Assets\images\Anh_Mau.png" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.3.6" />
         <PackageReference Include="Avalonia.Desktop" Version="11.3.6" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.6" />
@@ -38,8 +42,15 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Content Include="Assets\images\Anh_Mau.png" />
+    </ItemGroup>
+
+    <ItemGroup>
       <AvaloniaResource Update="Assets\images\Anh_Mau2.jpg">
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </AvaloniaResource>
+      <AvaloniaResource Update="Assets\images\LUCKY.svg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </AvaloniaResource>
     </ItemGroup>
 </Project>

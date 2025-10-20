@@ -12,7 +12,7 @@
     <Design.DataContext>
         <vm:BillPageViewModel/>
     </Design.DataContext>
-   <Border CornerRadius="20" Background="#D9D9D9" BorderBrush="Black" BorderThickness="2" Margin="10,10,10,10">
+   <Border CornerRadius="20" Background="#D9D9D9" BorderBrush="Black" BorderThickness="2" Margin="10,10,10,10" BoxShadow="0 0 10 2 black">
     <Grid RowDefinitions="180, 490">
         <!--Chức năng-->
         <StackPanel Grid.Row="0" Orientation="Vertical">

@@ -1,4 +1,4 @@
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Store.ViewModels;
@@ -14,4 +14,9 @@ public partial class CreateProductWindowView : Window
         InitializeComponent();
         DataContext = new CreateProductWindowViewModel();
     }
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
+    }
+
 }

@@ -11,9 +11,7 @@
         Height="700"
         Background="White"
         WindowStartupLocation="CenterScreen">
-	<Design.DataContext>
-		<vm:RegisterWindowViewModel/>
-		</Design.DataContext>
+	
 	<Border>
 		<Grid ColumnDefinitions="300, 700">
 			<!--Phần 1-->

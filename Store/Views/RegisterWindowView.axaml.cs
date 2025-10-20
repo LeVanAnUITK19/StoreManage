@@ -12,6 +12,7 @@ public partial class RegisterWindowView : Window
     {
        
         InitializeComponent();
+        DataContext = new RegisterWindowViewModel();
     }
     private void InitializeComponent()
     {
