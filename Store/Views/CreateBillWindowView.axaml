@@ -1,115 +1,115 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="using:Store.ViewModels"
-        mc:Ignorable="d"
-        d:DesignWidth="900"
-        d:DesignHeight="900"
-        Height="900"
-        Width="900"
-        Background="white"
-        WindowStartupLocation="CenterScreen"
-        x:Class="Store.Views.CreateBillWindowView"
-        x:DataType="vm:CreateBillWindowViewModel"
-        Title="CreateBillWindowView">
-        <Grid RowDefinitions="50,400,300,*">
-            <!--Phần 1-->
-			<Grid Grid.Row="0">
-                <TextBlock Classes="style7" FontSize="40">Hóa đơn</TextBlock>
-            </Grid>
-            <!--Phần 2-->
-            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <StackPanel Margin="30,0,20,0" Width="400">
-                    <TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">MaNV | Nhân viên:</TextBlock>
-                    <ComboBox Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="NV01 | Nguyen Cao Cuong">
-                        <ComboBoxItem Content="Nhân viên 1"/>
-                        <ComboBoxItem Content="Nhân viên 2"/>
-                        <ComboBoxItem Content="Nhân viên 3"/>
-                    </ComboBox>
-                    <TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">MaKH | Khách hàng:</TextBlock>
-                    <ComboBox Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="KH01 | Le Van An">
-                        <ComboBoxItem Content="Khách hàng 1"/>
-                        <ComboBoxItem Content="Khách hàng 2"/>
-                        <ComboBoxItem Content="Khách hàng 3"/>
-                    </ComboBox>
-                    <TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">Thời gian:</TextBlock>
-                    <TextBox Classes="style8" Width="400" Margin="0,0,0,10"/>
-                    <TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">Số HD:</TextBlock>
-                    <TextBox Classes="style8" Width="400" Margin="0,0,0,10"/>
-                </StackPanel>
-                <StackPanel Margin="20,0,30,0" Width="400">
-					<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">TenSP | Size | Tồn kho </TextBlock>
-                    <ComboBox Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="Sản phẩm demo | M | 01">
-                        <ComboBoxItem Content="Sản phẩm 1"/>
-                        <ComboBoxItem Content="Sản phẩm 2"/>
-                        <ComboBoxItem Content="Sản phẩm 3"/>
-                    </ComboBox>
-                     <TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">Đơn giá:</TextBlock>
-                    <TextBox Classes="style8" Width="400" Margin="0,0,0,10"/>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Classes="style7"  FontSize="25" HorizontalAlignment="Left">Số lượng:</TextBlock>
-                            <TextBox Classes="style8" Width="190" Margin="0,0,0,10"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Classes="style7"  FontSize="25" HorizontalAlignment="Left" Margin="20,0,0,0">Khuyến mãi:</TextBlock>
-                            <TextBox Classes="style8" Width="190" Margin="20,0,0,10"/>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
-                        <Button Classes="style6" Width="100">Thêm</Button>
-                        <Button Classes="style6" Width="100" Margin="10,0,10,0">Xóa</Button>
-                        <Button Classes="style6" Width="180">Thanh toán</Button>
-                    </StackPanel>
-                </StackPanel>
-            </StackPanel>
-            <!--Phần 3-->
-            <StackPanel Grid.Row="2">
-            <Border Margin="30,30,30,0" Width="840" Height="60" BorderBrush="black" BorderThickness="1">
-            <StackPanel Orientation="Horizontal" Classes="style9">
-               <TextBlock Classes="style7" Width="100">MaSP</TextBlock>
-               <TextBlock Classes="style7" Width="220">Tên SP</TextBlock>
-               <TextBlock Classes="style7" Width="150">Size</TextBlock>
-               <TextBlock Classes="style7" Width="150">Số lượng</TextBlock>
-               <TextBlock Classes="style7" Width="220">Thành tiền</TextBlock>
-           </StackPanel>
-           </Border>
-           <Border BorderBrush="black" BorderThickness="1" Width="840" Height="200" Margin="30,0,30,0">
-        <ScrollViewer>
-            <ItemsControl ItemsSource="{Binding SanPhams}">
-       <ItemsControl.ItemTemplate>
-        <DataTemplate>
-            <Border Margin="0,0,0,10" Width="820" Height="60"  BorderBrush="black" BorderThickness="1">
-                <StackPanel Orientation="Horizontal" Background="White">
-                    <TextBlock Classes="style7" Width="100" Text="{Binding MaSP}" VerticalAlignment="Center"/>
-                    <TextBlock Classes="style7" Width="220" Text="{Binding TenSP}" VerticalAlignment="Center"/>
-                    <TextBlock Classes="style7" Width="150" Text="{Binding KichThuocSP}" VerticalAlignment="Center"/>
-                    <TextBlock Classes="style7" Width="150" Text="{Binding SoLuongSP}" VerticalAlignment="Center"/>
-                    <TextBlock Classes="style7" Width="220" Text="{Binding GiaSP}" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Border>
-        </DataTemplate>
-    </ItemsControl.ItemTemplate>
-</ItemsControl>
-        </ScrollViewer>
-    </Border>
-          </StackPanel>
-          <!--Phần 4-->
-          <StackPanel Grid.Row="3">
-               <StackPanel Orientation="Horizontal" Margin="400, 0, 0, 10" Width="500">
-			        <TextBlock Classes="style7" FontSize="25" Width="150" TextAlignment="Left">Giảm giá:</TextBlock>
-                    <TextBlock Classes="style7" FontSize="25" Width="300" TextAlignment="Right">VND</TextBlock>
-               </StackPanel>
-               <StackPanel Orientation="Horizontal" Margin="400, 0, 0, 20"  Width="500">
-			        <TextBlock Classes="style7" FontSize="25" Width="150" TextAlignment="Left">Tổng trị giá:</TextBlock>
-                   <TextBlock Classes="style7" FontSize="25" Width="300" TextAlignment="Right">VND</TextBlock>
-               </StackPanel>
-              <StackPanel Orientation="Horizontal" Margin="400, 0, 0, 10"  Width="500">
-			        <TextBlock Classes="style7" FontSize="25" Width="150" TextAlignment="Left">Thành tiền:</TextBlock>
-                    <TextBlock Classes="style7" FontSize="25" Width="300" TextAlignment="Right">VND</TextBlock>
-               </StackPanel>
-               
-          </StackPanel>
-        </Grid>
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="using:Store.ViewModels"
+		mc:Ignorable="d"
+		d:DesignWidth="900"
+		d:DesignHeight="900"
+		Height="900"
+		Width="900"
+		Background="white"
+		WindowStartupLocation="CenterScreen"
+		x:Class="Store.Views.CreateBillWindowView"
+		x:DataType="vm:CreateBillWindowViewModel"
+		Title="CreateBillWindowView">
+	<Grid RowDefinitions="50,400,300,*">
+		<!--Phần 1-->
+		<Grid Grid.Row="0">
+			<TextBlock Classes="style7" FontSize="40">Hóa đơn</TextBlock>
+		</Grid>
+		<!--Phần 2-->
+		<StackPanel Grid.Row="1" Orientation="Horizontal">
+			<StackPanel Margin="30,0,20,0" Width="400">
+				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">MaNV | Nhân viên:</TextBlock>
+				<ComboBox Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="NV01 | Nguyen Cao Cuong">
+					<ComboBoxItem Content="Nhân viên 1"/>
+					<ComboBoxItem Content="Nhân viên 2"/>
+					<ComboBoxItem Content="Nhân viên 3"/>
+				</ComboBox>
+				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">MaKH | Khách hàng:</TextBlock>
+				<ComboBox Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="KH01 | Le Van An">
+					<ComboBoxItem Content="Khách hàng 1"/>
+					<ComboBoxItem Content="Khách hàng 2"/>
+					<ComboBoxItem Content="Khách hàng 3"/>
+				</ComboBox>
+				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">Thời gian:</TextBlock>
+				<TextBox Classes="style8" Width="400" Margin="0,0,0,10"/>
+				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">Số HD:</TextBlock>
+				<TextBox Classes="style8" Width="400" Margin="0,0,0,10"/>
+			</StackPanel>
+			<StackPanel Margin="20,0,30,0" Width="400">
+				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">TenSP | Size | Tồn kho </TextBlock>
+				<ComboBox Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="Sản phẩm demo | M | 01">
+					<ComboBoxItem Content="Sản phẩm 1"/>
+					<ComboBoxItem Content="Sản phẩm 2"/>
+					<ComboBoxItem Content="Sản phẩm 3"/>
+				</ComboBox>
+				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">Đơn giá:</TextBlock>
+				<TextBox Classes="style8" Width="400" Margin="0,0,0,10"/>
+				<StackPanel Orientation="Horizontal">
+					<StackPanel Orientation="Vertical">
+						<TextBlock Classes="style7"  FontSize="25" HorizontalAlignment="Left">Số lượng:</TextBlock>
+						<TextBox Classes="style8" Width="190" Margin="0,0,0,10"/>
+					</StackPanel>
+					<StackPanel Orientation="Vertical">
+						<TextBlock Classes="style7"  FontSize="25" HorizontalAlignment="Left" Margin="20,0,0,0">Khuyến mãi:</TextBlock>
+						<TextBox Classes="style8" Width="190" Margin="20,0,0,10"/>
+					</StackPanel>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+					<Button Classes="style6" Width="100">Thêm</Button>
+					<Button Classes="style6" Width="100" Margin="10,0,10,0">Xóa</Button>
+					<Button Classes="style6" Width="180">Thanh toán</Button>
+				</StackPanel>
+			</StackPanel>
+		</StackPanel>
+		<!--Phần 3-->
+		<StackPanel Grid.Row="2">
+			<Border Margin="30,30,30,0" Width="840" Height="60" BorderBrush="black" BorderThickness="1">
+				<StackPanel Orientation="Horizontal" Classes="style9">
+					<TextBlock Classes="style7" Width="100">MaSP</TextBlock>
+					<TextBlock Classes="style7" Width="220">Tên SP</TextBlock>
+					<TextBlock Classes="style7" Width="150">Size</TextBlock>
+					<TextBlock Classes="style7" Width="150">Số lượng</TextBlock>
+					<TextBlock Classes="style7" Width="220">Thành tiền</TextBlock>
+				</StackPanel>
+			</Border>
+			<Border BorderBrush="black" BorderThickness="1" Width="840" Height="200" Margin="30,0,30,0">
+				<ScrollViewer>
+					<ItemsControl ItemsSource="{Binding SanPhams}">
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<Border Margin="0,0,0,10" Width="820" Height="60"  BorderBrush="black" BorderThickness="1">
+									<StackPanel Orientation="Horizontal" Background="White">
+										<TextBlock Classes="style7" Width="100" Text="{Binding MaSP}" VerticalAlignment="Center"/>
+										<TextBlock Classes="style7" Width="220" Text="{Binding TenSP}" VerticalAlignment="Center"/>
+										<TextBlock Classes="style7" Width="150" Text="{Binding KichThuocSP}" VerticalAlignment="Center"/>
+										<TextBlock Classes="style7" Width="150" Text="{Binding SoLuongSP}" VerticalAlignment="Center"/>
+										<TextBlock Classes="style7" Width="220" Text="{Binding GiaSP}" VerticalAlignment="Center"/>
+									</StackPanel>
+								</Border>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+				</ScrollViewer>
+			</Border>
+		</StackPanel>
+		<!--Phần 4-->
+		<StackPanel Grid.Row="3">
+			<StackPanel Orientation="Horizontal" Margin="400, 0, 0, 10" Width="500">
+				<TextBlock Classes="style7" FontSize="25" Width="150" TextAlignment="Left">Giảm giá:</TextBlock>
+				<TextBlock Classes="style7" FontSize="25" Width="300" TextAlignment="Right">VND</TextBlock>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Margin="400, 0, 0, 20"  Width="500">
+				<TextBlock Classes="style7" FontSize="25" Width="150" TextAlignment="Left">Tổng trị giá:</TextBlock>
+				<TextBlock Classes="style7" FontSize="25" Width="300" TextAlignment="Right">VND</TextBlock>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Margin="400, 0, 0, 10"  Width="500">
+				<TextBlock Classes="style7" FontSize="25" Width="150" TextAlignment="Left">Thành tiền:</TextBlock>
+				<TextBlock Classes="style7" FontSize="25" Width="300" TextAlignment="Right">VND</TextBlock>
+			</StackPanel>
+		</StackPanel>
+
+	</Grid>
 </Window>

@@ -1,10 +1,15 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Media.Imaging;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Store.Models;
 using Store.Services;
+using Store.Services;
 using System;
 using System.Collections.ObjectModel;
-using Store.Services;
+using System.Threading.Tasks;
+
 
 namespace Store.ViewModels
 {
@@ -36,7 +41,7 @@ namespace Store.ViewModels
         public CreateProductWindowViewModel()
         {
             // Tự động tạo mã sản phẩm ban đầu
-            MaSP = DatabaseService.GenerateNewMaSP();
+            MaSP = SanPhanService.GenerateNewMaSP();
         }
 
         [RelayCommand]
@@ -55,7 +60,7 @@ namespace Store.ViewModels
                     MoTaSP = MoTaSP,
                     HinhAnhSP = null, // Có thể sau này bạn sẽ load từ file
                 };
-                DatabaseService.InsertSanPham(sanPham);
+                SanPhanService.InsertSanPham(sanPham);
                 // Sau khi thêm thành công
                 System.Diagnostics.Debug.WriteLine($"Đã thêm sản phẩm: {TenSP}");
                 // Reset form
@@ -66,12 +71,35 @@ namespace Store.ViewModels
                 KichThuocSP = "";
                 MoTaSP = "";
                 HinhAnhDuongDan = "";
-                MaSP = DatabaseService.GenerateNewMaSP(); // tạo mã mới cho lần tiếp theo
+                MaSP = SanPhanService.GenerateNewMaSP(); // tạo mã mới cho lần tiếp theo
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Lỗi khi tạo sản phẩm: {ex.Message}");
             }
         }
+        [RelayCommand]
+        public async Task OpenFileImage()
+        {
+            // Tạo FileDialog
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.Filters.Add(new FileDialogFilter() { Name = "Images", Extensions = { "png", "jpg", "jpeg", "bmp" } });
+            openFileDialog.AllowMultiple = false;
+
+            // Lấy Window hiện tại
+            var window = App.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop
+                ? desktop.MainWindow
+                : null;
+
+            if (window != null)
+            {
+                var result = await openFileDialog.ShowAsync(window);
+                if (result != null && result.Length > 0)
+                {
+                    HinhAnhDuongDan = result[0]; // Lưu đường dẫn vào property
+                }
+            }
+        }
+       
     }
 }

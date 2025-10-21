@@ -1,0 +1,26 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        Height="600"
+        Width="800"
+        Background="Transparent"
+        SystemDecorations="None"
+        xmlns:vm="using:Store.ViewModels" 
+        x:Class="Store.ProductDetailWindowView"
+        x:DataType="vm:ProductDetailWindowViewModel"
+        Title="Chi tiết sản phẩm">
+
+    <Design.DataContext>
+        <vm:ProductDetailWindowViewModel />
+    </Design.DataContext>
+
+    <!-- Border ngoài cùng bo góc -->
+    <Border Background="White" CornerRadius="30"
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            Padding="10">
+        
+       
+    </Border>
+</Window>

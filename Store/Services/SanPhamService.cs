@@ -7,7 +7,7 @@ using Avalonia.Media.Imaging;
 
 namespace Store.Services
 {
-    public static class DatabaseService
+    public static class SanPhanService 
     {
         private static readonly string dbPath = Path.Combine(AppContext.BaseDirectory, "store.db");
 
@@ -24,19 +24,6 @@ namespace Store.Services
                 connection.Open();
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = @"
-                CREATE TABLE IF NOT EXISTS Users (
-                    MaNV TEXT PRIMARY KEY,
-                    TenDangNhap TEXT NOT NULL,
-                    MatKhau TEXT NOT NULL,
-                    HoTen TEXT,
-                    Email TEXT,
-                    SDT TEXT,
-                    DiaChi TEXT,
-                    NgaySinh TEXT,
-                    GioiTinh TEXT,
-                    HinhAnh TEXT
-                );
-
                 CREATE TABLE IF NOT EXISTS SanPham (
                     MaSP TEXT PRIMARY KEY,
                     TenSP TEXT NOT NULL,
@@ -50,35 +37,6 @@ namespace Store.Services
                 cmd.ExecuteNonQuery();
             }
         }
-
-        public static void InsertUser(User user)
-        {
-            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
-            {
-                connection.Open();
-                var cmd = connection.CreateCommand();
-                string newMaNV = GenerateNewMaNV();
-
-                cmd.CommandText = @"
-                INSERT INTO Users 
-                (MaNV, TenDangNhap, MatKhau, HoTen, Email, SDT, DiaChi, NgaySinh, GioiTinh, HinhAnh)
-                VALUES ($MaNV, $TenDangNhap, $MatKhau, $HoTen, $Email, $SDT, $DiaChi, $NgaySinh, $GioiTinh, $HinhAnh)";
-
-                cmd.Parameters.AddWithValue("$MaNV", newMaNV);
-                cmd.Parameters.AddWithValue("$TenDangNhap", user.TenDangNhap);
-                cmd.Parameters.AddWithValue("$MatKhau", user.MatKhau);
-                cmd.Parameters.AddWithValue("$HoTen", user.HoTen ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("$Email", user.Email ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("$SDT", user.SDT ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("$DiaChi", user.DiaChi ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("$NgaySinh", user.NgaySinh?.ToString("yyyy-MM-dd") ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("$GioiTinh", user.GioiTinh ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("$HinhAnh", user.HinhAnh ?? (object)DBNull.Value);
-
-                cmd.ExecuteNonQuery();
-            }
-        }
-
         public static void InsertSanPham(SanPham sp)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -146,24 +104,6 @@ namespace Store.Services
 
             return sanPhams;
         }
-
-        public static string GenerateNewMaNV()
-        {
-            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
-            {
-                connection.Open();
-                var cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT MaNV FROM Users ORDER BY MaNV DESC LIMIT 1";
-                var result = cmd.ExecuteScalar()?.ToString();
-
-                if (string.IsNullOrEmpty(result))
-                    return "NV001";
-
-                int number = int.Parse(result.Substring(2));
-                return $"NV{(number + 1):D3}";
-            }
-        }
-
         public static string GenerateNewMaSP()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))

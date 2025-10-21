@@ -47,7 +47,7 @@ namespace Store.ViewModels
                 HinhAnh = HinhAnh
             };
 
-            DatabaseService.InsertUser(user);
+            UserService.InsertUser(user);
             Console.WriteLine("Đăng ký thành công!");
             if (App.Current.ApplicationLifetime is Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime desktop
                 && desktop.MainWindow is Avalonia.Controls.Window mainWindow)

@@ -4,9 +4,11 @@ Title="test_app"
 Height="800"
 Width="1200"
 WindowStartupLocation="CenterScreen"
-Background="#D9D9D9"
+Background="White"
 d:DesignHeight="800"
 d:DesignWidth="1200"
+
+SystemDecorations="None"
 mc:Ignorable="d"
 x:Class="Store.Views.MainWindow"
 x:DataType="vm:MainWindowViewModel"
@@ -17,17 +19,13 @@ xmlns:vm="using:Store.ViewModels"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 	<Design.DataContext>
-		<!--
-		This only sets the DataContext for the previewer in an IDE,
-		to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
-		-->
 		<vm:MainWindowViewModel />
 	</Design.DataContext>
 
 	<Border  Height="600" Width="900">
 		<!--  Chia bố cục  -->
 
-		<Grid Background="#D9D9D9" ColumnDefinitions="450,450">
+		<Grid Background="White" ColumnDefinitions="450,450">
 			<!--Phần 1-->
 			<Border Background="#1F5CF5" CornerRadius="80,0,0,0" BoxShadow="0 0 2 2 #5C81F0" Grid.Column="0">
 				<StackPanel>
@@ -62,5 +60,4 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 		</Grid>
 	</Border>
-
 </Window>

@@ -92,7 +92,7 @@
 	</Style>
 	<!--Style textbox4-->
 	<Style Selector="TextBox.style4">
-		<Setter Property="Background" Value="white"/>
+		<Setter Property="Background" Value="#D9D9D9"/>
 		<Setter Property="FontSize" Value="25"/>
 		<Setter Property="Height" Value="60"/>
 		<Setter Property="Width" Value="200"/>
@@ -106,7 +106,7 @@
 	</Style>
 	<!--Style combobox5-->
 	<Style Selector="ComboBox.style5">
-		<Setter Property="Background" Value="White"/>
+		<Setter Property="Background" Value="#D9D9D9"/>
 		<Setter Property="PlaceholderText" Value="Bộ lọc"/>
 		<Setter Property="PlaceholderForeground" Value="Black"/>
 		<Setter Property="FontSize" Value="25"/>
@@ -152,7 +152,7 @@
 	</Style>
 	<!--Style textbox8-->
 	<Style Selector="TextBox.style8" >
-		<Setter Property="Background" Value="white"/>
+		<Setter Property="Background" Value="#D9D9D9"/>
 		<Setter Property="FontSize" Value="25"/>
 		<Setter Property="Height" Value="60"/>
 		<Setter Property="Width" Value="200"/>
@@ -194,5 +194,6 @@
 		<Setter Property="HorizontalAlignment" Value="Left"/>
 		<Setter Property="Foreground" Value="Black"/>
 </Style>
+	
 
 </Styles>

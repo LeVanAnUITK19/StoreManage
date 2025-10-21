@@ -4,16 +4,17 @@
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="d"
 			 d:DesignWidth="1000" d:DesignHeight="700"
+			 Background="#D9D9D9"
 			 xmlns:vm="clr-namespace:Store.ViewModels"
 			 x:DataType="vm:ProductPageViewModel"
 			 x:Class="Store.Views.ProductPageView"
-			 Background="White">
+			 >
 
 	<Design.DataContext>
 		<vm:ProductPageViewModel/>
 	</Design.DataContext>
 
-	<Border CornerRadius="20" Background="#D9D9D9" BorderBrush="Black" BorderThickness="2" Margin="10" BoxShadow="0 0 10 2 black">
+	<Border CornerRadius="20" Background="White"  Margin="10" BoxShadow="0 0 10 2 black">
 		<Grid RowDefinitions="Auto,*">
 
 			<!-- Khu chức năng -->
@@ -36,7 +37,7 @@
 			</StackPanel>
 
 			<!-- Danh sách sản phẩm -->
-			<Border Grid.Row="1" BorderBrush="black" BorderThickness="1" Width="900" Height="580" Margin="20,0,20,20" >
+			<Border Grid.Row="1"  Width="900" Height="580" Margin="20,0,20,20" >
 				<ScrollViewer VerticalScrollBarVisibility="Auto">
 					<ItemsControl ItemsSource="{Binding SanPhams}">
 						<!-- WrapPanel để sắp xếp các thẻ sản phẩm -->
@@ -47,20 +48,23 @@
 						</ItemsControl.ItemsPanel>
 						<ItemsControl.ItemTemplate>
 							<DataTemplate>
-								<Border Margin="10" Width="200" Height="250" Background="White" BorderBrush="black" BorderThickness="1" CornerRadius="10" Padding="5" BoxShadow="1 1 10 1 black">
-									<StackPanel>
-										<Image Height="180" Width="180" Source="{Binding HinhAnhSP}" Stretch="UniformToFill"/>
+								<Button>
+									<Border  Margin="10" Width="200" Height="250" Background="White" BorderBrush="black" BorderThickness="1" CornerRadius="10" Padding="5" BoxShadow="1 1 10 1 black">
+										<StackPanel>
+											
+											<Image Height="180" Width="180" Source="{Binding HinhAnhSP}" Stretch="UniformToFill"/>
 
-										<TextBlock Classes="style7" Height="30" Text="{Binding TenSP}" FontSize="15" TextAlignment="Center"/>
+											<TextBlock Classes="style7" Height="30" Text="{Binding TenSP}" FontSize="15" TextAlignment="Center"/>
 
-										<TextBlock Classes="style7" TextAlignment="Center" FontSize="15">
-											<Run Text="{Binding GiaSP}"/>
-											<Run Text=" VND ("/>
-											<Run Text="{Binding SoLuongSP}"/>
-											<Run Text=")"/>
-										</TextBlock>
-									</StackPanel>
-								</Border>
+											<TextBlock Classes="style7" TextAlignment="Center" FontSize="15">
+												<Run Text="{Binding GiaSP}"/>
+												<Run Text=" VND ("/>
+												<Run Text="{Binding SoLuongSP}"/>
+												<Run Text=")"/>
+											</TextBlock>
+										</StackPanel>
+									</Border>
+								</Button>
 							</DataTemplate>
 						</ItemsControl.ItemTemplate>
 					</ItemsControl>

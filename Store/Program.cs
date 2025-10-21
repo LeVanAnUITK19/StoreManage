@@ -10,7 +10,7 @@ sealed class Program
     public static void Main(string[] args)
     {
         // ✅ Khởi tạo CSDL (tạo file store.db + bảng nếu chưa có)
-        DatabaseService.Initialize();
+        SanPhanService.Initialize();
 
         // ✅ Sau đó mới khởi chạy ứng dụng
         BuildAvaloniaApp()
