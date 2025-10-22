@@ -24,8 +24,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void RegisterButton()
     {
-        var regis = new RegisterWindowView();
+        var regis = new CreateAcountWindowView();
         regis.DataContext = regis;
         regis.Show();
     }
+    
 }

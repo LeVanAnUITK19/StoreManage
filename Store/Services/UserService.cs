@@ -39,14 +39,13 @@ namespace Store.Services
                 cmd.ExecuteNonQuery();
             }
         }
-
         public static void InsertUser(User user)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
                 connection.Open();
                 var cmd = connection.CreateCommand();
-                string newMaNV = GenerateNewMaNV();
+                string newMaNV = GenerateNewMaUser();
 
                 cmd.CommandText = @"
                 INSERT INTO Users 
@@ -67,9 +66,7 @@ namespace Store.Services
                 cmd.ExecuteNonQuery();
             }
         }
-       
-
-        public static string GenerateNewMaNV()
+        public static string GenerateNewMaUser()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {

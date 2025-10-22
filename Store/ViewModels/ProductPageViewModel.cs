@@ -1,6 +1,7 @@
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Store.Models;
@@ -18,10 +19,32 @@ namespace Store.ViewModels
         [ObservableProperty] private decimal giaSP;
         [ObservableProperty] private int soLuongSP;
         [ObservableProperty] private ObservableCollection<SanPham> sanPhams = new();
-
+        private readonly DispatcherTimer _timer;
+        public ObservableCollection<string> DanhSachBoLoc { get; } = new()
+        {
+           "Quần ngắn",
+           "Quần dài",
+           "Áo ngắn",
+           "Áo dài",
+           "Tất cả"
+        };
+        public ObservableCollection<string> DanhSachChiTiet { get; } = new()
+        {
+            "GiaSP",
+            "TenSP",
+            "SoLuong",
+            "Tất cả"
+        };
         public ProductPageViewModel()
         {
             LoadSanPhams();
+            // ✅ Tạo timer lặp lại mỗi 5 giây
+            _timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(5)
+            };
+            _timer.Tick += (s, e) => LoadSanPhams();
+            _timer.Start();
         }
         private void LoadSanPhams()
         {

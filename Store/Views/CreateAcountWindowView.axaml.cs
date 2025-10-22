@@ -2,17 +2,16 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Store.ViewModels;
-
+using Store.Views;
 
 namespace Store.Views;
 
-public partial class RegisterWindowView : Window
+public partial class CreateAcountWindowView : Window
 {
-    public RegisterWindowView()
+    public CreateAcountWindowView()
     {
-       
         InitializeComponent();
-        DataContext = new RegisterWindowViewModel();
+      
     }
     private void InitializeComponent()
     {

@@ -1,0 +1,53 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="using:Store.ViewModels"
+		mc:Ignorable="d" d:DesignWidth="650"
+		d:DesignHeight="800"
+		Height="800"
+		Width="650"
+		Background="white"
+		SystemDecorations="None"
+		x:DataType="vm:CreateCustomerWindowViewModel"
+		WindowStartupLocation="CenterScreen"
+		x:Class="Store.CreateCustomerWindowView"
+		Title="Create Product">
+	<Border BorderBrush="Black" BorderThickness="3" Padding="3">
+		<StackPanel Grid.Column="1" Orientation="Vertical">
+			<Button Command="{Binding $parent[Window].Close}" Classes="style12" Margin="600,0,5,0">X</Button>
+			<TextBlock Classes="style7" FontSize="35" HorizontalAlignment="Center" Margin="0,0,0,10">Khách hàng</TextBlock>
+			<!--MaKH | Hang && Ten KH -->
+			<StackPanel Orientation="Horizontal">
+				<StackPanel Orientation="Vertical" Margin="10,0,20,0">
+					<TextBlock Classes="style7"  FontSize="20" Text="MaKH" HorizontalAlignment="Left" Margin="0,30,0,0"/>
+					<TextBox Text="{Binding MaKH, Mode=TwoWay}" IsReadOnly="True" Classes="style8" Width="300" Watermark="KH001"/>
+				</StackPanel>
+				<StackPanel Orientation="Vertical" Margin="0,0,20,0">
+					<TextBlock Classes="style7" FontSize="20" Text="Tên khách hàng" HorizontalAlignment="Left" Margin="0,30,0,0"/>
+					<TextBox Text="{Binding TenKH, Mode=TwoWay}" Classes="style8" Width="300" Watermark="Nguyen Van A"/>
+				</StackPanel>
+			</StackPanel>
+
+			<!-- SDT && Gioi Tinh -->
+			<StackPanel Orientation="Horizontal">
+				<StackPanel Orientation="Vertical" Margin="10,0,20,0">
+					<TextBlock  Classes="style7" FontSize="20" Text="Số điện thoại" HorizontalAlignment="Left" Margin="0,30,0,0"/>
+					<TextBox Text="{Binding SDT, Mode=TwoWay}"  Classes="style8" Width="300" Watermark="0999999999"/>
+				</StackPanel>
+				<StackPanel Orientation="Vertical" Margin="0,0,20,0">
+					<TextBlock Classes="style7" FontSize="20" Text="Giới tính:" HorizontalAlignment="Left" Margin="0,30,0,0"/>
+					<ComboBox ItemsSource="{Binding DanhSachGioiTinh, Mode=TwoWay}"  SelectedItem="{Binding GioiTinh}" Classes="style5" PlaceholderText="Nam" Width="300"></ComboBox>
+				</StackPanel>
+			</StackPanel>
+			<!--Địa chỉ && Ghi chú-->
+			<TextBlock Classes="style7" FontSize="20" Margin="10,30,0,0" Text="Địa chỉ:" HorizontalAlignment="Left" TextAlignment="Left"/>
+			<TextBox Text="{Binding DiaChi, Mode=TwoWay}" Classes="style8" Width="620" Height="60" Margin="10,0,0,0" AcceptsReturn="True" TextWrapping="Wrap" Watermark="Khu pho 3, Quan 1, TP HCM"/>
+			<TextBlock Classes="style7" FontSize="20" Margin="10,30,0,0" Text="Ghi chú:" HorizontalAlignment="Left" />
+			<TextBox Text="{Binding GhiChu, Mode=TwoWay}" Classes="style8" Width="620" Height="100" Margin="10,0,0,0" AcceptsReturn="True" TextWrapping="Wrap"/>
+			<Button Command="{Binding TaoKhachHangButtonCommand}" Classes="style3" Width="620" Height="60" Margin="10,50,20,0">Tạo Khách Hàng</Button>
+		</StackPanel>
+	</Border>
+
+
+</Window>

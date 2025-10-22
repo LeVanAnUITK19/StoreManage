@@ -37,6 +37,8 @@ namespace Store.Services
                 cmd.ExecuteNonQuery();
             }
         }
+        //CRUD
+        //Create
         public static void InsertSanPham(SanPham sp)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -60,7 +62,7 @@ namespace Store.Services
                 cmd.ExecuteNonQuery();
             }
         }
-
+        //Read
         public static List<SanPham> GetAllSanPham()
         {
             var sanPhams = new List<SanPham>();
@@ -104,6 +106,49 @@ namespace Store.Services
 
             return sanPhams;
         }
+        //Update
+        public static void UpdateSanPham(SanPham sp)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                UPDATE SanPham 
+                SET TenSP = $TenSP,
+                    GiaSP = $GiaSP,
+                    SoLuongSP = $SoLuongSP,
+                    HinhAnhDuongDan = $HinhAnhDuongDan,
+                    KichThuocSP = $KichThuocSP,
+                    LoaiSP = $LoaiSP,
+                    MoTaSP = $MoTaSP
+                WHERE MaSP = $MaSP";
+                cmd.Parameters.AddWithValue("$MaSP", sp.MaSP);
+                cmd.Parameters.AddWithValue("$TenSP", sp.TenSP);
+                cmd.Parameters.AddWithValue("$GiaSP", (double)sp.GiaSP);
+                cmd.Parameters.AddWithValue("$SoLuongSP", sp.SoLuongSP);
+                cmd.Parameters.AddWithValue("$HinhAnhDuongDan", sp.HinhAnhDuongDan ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("$KichThuocSP", sp.KichThuocSP);
+                cmd.Parameters.AddWithValue("$LoaiSP", sp.LoaiSP);
+                cmd.Parameters.AddWithValue("$MoTaSP", sp.MoTaSP ?? (object)DBNull.Value);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // Delete
+        public static void DeleteSanPham(string maSP)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "DELETE FROM SanPham WHERE MaSP = $MaSP";
+                cmd.Parameters.AddWithValue("$MaSP", maSP);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        //Tạo MaSP
         public static string GenerateNewMaSP()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))

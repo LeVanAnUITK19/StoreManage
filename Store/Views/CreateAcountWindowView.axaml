@@ -1,0 +1,76 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="using:Store.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="800"
+		Height="800"
+		Width="1000"
+		Background="White"
+		WindowStartupLocation="CenterScreen"
+	    x:DataType="vm:CreateAcountWindowViewModel"
+        x:Class="Store.Views.CreateAcountWindowView"
+        Title="CreateAcountWindowView">
+	<Window.DataContext>
+		<vm:CreateAcountWindowViewModel/>
+	</Window.DataContext>
+    <Grid ColumnDefinitions="350,650">
+		<!-- Cột 1: Hình ảnh -->
+		<StackPanel Grid.Column="0" Orientation="Vertical" Margin="25,200,25,200">
+			<Border Background="White" CornerRadius="180" BoxShadow="0 0 3 3 gray" Width="300" Height="300" Padding="7">
+				<Image  Source="{Binding HinhAnh, Mode=TwoWay}" Stretch="UniformToFill" IsHitTestVisible="True"/>
+				
+			</Border>
+			<Button Classes="style3" Width="300" Height="60" Margin="0,30,0,0">Thêm ảnh</Button>
+		</StackPanel>
+
+		<!-- Cột 2: Thông tin sản phẩm -->
+		<StackPanel Grid.Column="1" Orientation="Vertical">
+			<TextBlock Classes="style7" FontSize="35" HorizontalAlignment="Center" Margin="0,30,0,10">Đăng ký</TextBlock>
+
+			<!--Teen Đăng nhập && Mật khẩu -->
+			<StackPanel Orientation="Horizontal">
+				<StackPanel Orientation="Vertical" Margin="10,0,20,0">
+					<TextBlock Classes="style7" FontSize="20" Text="Tên đăng nhập:" HorizontalAlignment="Left" Margin="0,20,0,0"/>
+					<TextBox Text="{Binding TenDangNhap, Mode=TwoWay}"  Classes="style8" Width="300" Watermark="UserName"/>
+				</StackPanel>
+				<StackPanel Orientation="Vertical" Margin="0,0,20,0">
+					<TextBlock Classes="style7" FontSize="20" Text="Mật khẩu:"  HorizontalAlignment="Left" Margin="0,20,0,0"/>
+					<TextBox Text="{Binding MatKhau, Mode=TwoWay}" Classes="style8" Width="300" Watermark="Password"/>
+				</StackPanel>
+			</StackPanel>
+
+			<!-- Họ tên && Giới tính -->
+			<StackPanel Orientation="Horizontal">
+				<StackPanel Orientation="Vertical" Margin="10,0,20,0">
+					<TextBlock Classes="style7" FontSize="20" Text="Họ tên:" HorizontalAlignment="Left" Margin="0,20,0,0"/>
+					<TextBox Text="{Binding HoTen, Mode=TwoWay}"  Classes="style8" Width="300" Watermark="FullName"/>
+				</StackPanel>
+				<StackPanel Orientation="Vertical" Margin="0,0,20,0">
+					<TextBlock Classes="style7" FontSize="20" Text="Giới tính:" HorizontalAlignment="Left" Margin="0,20,0,0"/>
+					<ComboBox ItemsSource="{Binding DanhSachGioiTinh}"  SelectedItem="{Binding GioiTinh, Mode=TwoWay}" Classes="style5" PlaceholderText="Nam" Width="300"></ComboBox>
+				</StackPanel>
+			</StackPanel>
+
+			<!--Ngày sinh && SDT -->
+			<StackPanel Orientation="Horizontal">
+				<StackPanel Orientation="Vertical" Margin="10,0,20,0">
+					<TextBlock Classes="style7" FontSize="20" Text="Ngày sinh:" HorizontalAlignment="Left" Margin="0,20,0,0"/>
+					<CalendarDatePicker  SelectedDate="{Binding NgaySinh, Mode=TwoWay}" FontSize="20" Height="60" Width="300" Background="#D9D9D9" Foreground="black"/>				</StackPanel>
+				<StackPanel Orientation="Vertical" Margin="0,0,20,0">
+					<TextBlock Classes="style7" FontSize="20" Text="Số điện thoại:" HorizontalAlignment="Left" Margin="0,20,0,0"/>
+					<TextBox Text="{Binding SDT, Mode=TwoWay}"  Classes="style8" Width="300" Watermark="0999999999"/>
+				</StackPanel>
+			</StackPanel>
+
+			<!-- Email && Địa chỉ -->
+			<TextBlock Classes="style7" FontSize="20" Margin="10,20,0,0" Text="Email:" HorizontalAlignment="Left" TextAlignment="Left"/>
+			<TextBox Text="{Binding Email, Mode=TwoWay}" Classes="style8" Width="620" Height="60" Margin="10,0,0,0" AcceptsReturn="True" TextWrapping="Wrap" Watermark="Email"/>
+			<TextBlock Classes="style7" FontSize="20" Margin="10,20,0,0" Text="Địa chỉ:" HorizontalAlignment="Left" />
+			<TextBox Text="{Binding DiaChi, Mode=TwoWay}" Classes="style8" Width="620" Height="60" Margin="10,0,0,0" AcceptsReturn="True" TextWrapping="Wrap" Watermark="Address"/>
+
+			<!-- Nút tạo sản phẩm -->
+			<Button Command="{Binding DangKyButtonCommand}" Classes="style3" Height="60" Width="620" HorizontalAlignment="Center" Margin="0,40,0,0">Tạo sản phẩm</Button>
+		</StackPanel>
+	</Grid>
+</Window>

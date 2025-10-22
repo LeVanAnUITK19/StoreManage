@@ -11,6 +11,8 @@ sealed class Program
     {
         // ✅ Khởi tạo CSDL (tạo file store.db + bảng nếu chưa có)
         SanPhanService.Initialize();
+        UserService.Initialize();
+        KhachHangService.Initialize();
 
         // ✅ Sau đó mới khởi chạy ứng dụng
         BuildAvaloniaApp()

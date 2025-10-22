@@ -14,7 +14,7 @@ namespace Store.Models
         public string KichThuocSP { get; set; } = string.Empty;
         public string LoaiSP { get; set; } = string.Empty;
         public string? MoTaSP { get; set; }
-
+        public string TenSP_Size_TonKho => $"{TenSP} | {KichThuocSP} | {SoLuongSP}";
         public SanPham() { }
     }
 }

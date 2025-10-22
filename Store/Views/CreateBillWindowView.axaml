@@ -18,53 +18,65 @@
 		<Grid Grid.Row="0">
 			<TextBlock Classes="style7" FontSize="40">Hóa đơn</TextBlock>
 		</Grid>
-		<!--Phần 2-->
+		<!--Phần 2 Nhập thông tin-->
 		<StackPanel Grid.Row="1" Orientation="Horizontal">
+
 			<StackPanel Margin="30,0,20,0" Width="400">
+				<!--MaNV|Nhân Viên-->
 				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">MaNV | Nhân viên:</TextBlock>
 				<ComboBox Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="NV01 | Nguyen Cao Cuong">
-					<ComboBoxItem Content="Nhân viên 1"/>
-					<ComboBoxItem Content="Nhân viên 2"/>
-					<ComboBoxItem Content="Nhân viên 3"/>
 				</ComboBox>
+				<!--MaKH | Khách hàng-->
 				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">MaKH | Khách hàng:</TextBlock>
-				<ComboBox Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="KH01 | Le Van An">
-					<ComboBoxItem Content="Khách hàng 1"/>
-					<ComboBoxItem Content="Khách hàng 2"/>
-					<ComboBoxItem Content="Khách hàng 3"/>
+				<ComboBox  ItemsSource="{Binding DanhSachKhachHang, Mode=TwoWay}"  SelectedItem="{Binding KhachHangDuocChon, Mode=TwoWay}" Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="KH01 | Le Van An">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding MaVaTen}" />
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
 				</ComboBox>
+				<!--Thời gina-->
 				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">Thời gian:</TextBlock>
 				<TextBox Classes="style8" Width="400" Margin="0,0,0,10"/>
+				<!--Số HD-->
 				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">Số HD:</TextBlock>
 				<TextBox Classes="style8" Width="400" Margin="0,0,0,10"/>
 			</StackPanel>
 			<StackPanel Margin="20,0,30,0" Width="400">
+				<!--TenSP|Size|Tồn kho-->
 				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">TenSP | Size | Tồn kho </TextBlock>
-				<ComboBox Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="Sản phẩm demo | M | 01">
-					<ComboBoxItem Content="Sản phẩm 1"/>
-					<ComboBoxItem Content="Sản phẩm 2"/>
-					<ComboBoxItem Content="Sản phẩm 3"/>
+				<ComboBox ItemsSource="{Binding DanhSachSanPham, Mode=TwoWay}"  SelectedItem="{Binding SanPhamDuocChon, Mode=TwoWay}" Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="Sản phẩm demo | M | 01">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding TenSP_Size_TonKho}" />
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
 				</ComboBox>
+				<!--Don gia-->
 				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">Đơn giá:</TextBlock>
 				<TextBox Classes="style8" Width="400" Margin="0,0,0,10"/>
 				<StackPanel Orientation="Horizontal">
+					<!--So Luong-->
 					<StackPanel Orientation="Vertical">
 						<TextBlock Classes="style7"  FontSize="25" HorizontalAlignment="Left">Số lượng:</TextBlock>
 						<TextBox Classes="style8" Width="190" Margin="0,0,0,10"/>
 					</StackPanel>
+					<!--Khuyen Mai-->
 					<StackPanel Orientation="Vertical">
 						<TextBlock Classes="style7"  FontSize="25" HorizontalAlignment="Left" Margin="20,0,0,0">Khuyến mãi:</TextBlock>
 						<TextBox Classes="style8" Width="190" Margin="20,0,0,10"/>
 					</StackPanel>
 				</StackPanel>
 				<StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+					<!--Nút Thêm XÓa Thanh Toán-->
 					<Button Classes="style6" Width="100">Thêm</Button>
 					<Button Classes="style6" Width="100" Margin="10,0,10,0">Xóa</Button>
-					<Button Classes="style6" Width="180">Thanh toán</Button>
+					<Button Classes="style3" Width="180" Height="60">Thanh toán</Button>
 				</StackPanel>
 			</StackPanel>
 		</StackPanel>
-		<!--Phần 3-->
+
+		<!--Phần 3 Hiển thị-->
 		<StackPanel Grid.Row="2">
 			<Border Margin="30,30,30,0" Width="840" Height="60" BorderBrush="black" BorderThickness="1">
 				<StackPanel Orientation="Horizontal" Classes="style9">

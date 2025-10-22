@@ -19,16 +19,10 @@
 
 			<!-- Khu chức năng -->
 			<StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
-				<ComboBox Classes="style5" Width="200" Margin="0,0,10,0">
-					<ComboBoxItem Content="Quần dài"/>
-					<ComboBoxItem Content="Quần ngắn"/>
-					<ComboBoxItem Content="Quần jean"/>
-					<ComboBoxItem Content="Áo khoác"/>
+				<ComboBox ItemsSource="{Binding DanhSachBoLoc}" Classes="style5" Width="200" Margin="0,0,10,0">
 				</ComboBox>
 
-				<ComboBox Classes="style5" Width="150" Margin="0,0,10,0" PlaceholderText="Chi tiết">
-					<ComboBoxItem Content="Tên SP"/>
-					<ComboBoxItem Content="Giá"/>
+				<ComboBox ItemsSource="{Binding DanhSachChiTiet}" Classes="style5" Width="150" Margin="0,0,10,0" PlaceholderText="Chi tiết">
 				</ComboBox>
 
 				<TextBox Classes="style4" Width="350" Margin="0,0,120,0"/>
@@ -37,7 +31,7 @@
 			</StackPanel>
 
 			<!-- Danh sách sản phẩm -->
-			<Border Grid.Row="1"  Width="900" Height="580" Margin="20,0,20,20" >
+			<Border Grid.Row="1"  Width="950" Height="580" Margin="5,0,5,20">
 				<ScrollViewer VerticalScrollBarVisibility="Auto">
 					<ItemsControl ItemsSource="{Binding SanPhams}">
 						<!-- WrapPanel để sắp xếp các thẻ sản phẩm -->
@@ -49,7 +43,7 @@
 						<ItemsControl.ItemTemplate>
 							<DataTemplate>
 								<Button>
-									<Border  Margin="10" Width="200" Height="250" Background="White" BorderBrush="black" BorderThickness="1" CornerRadius="10" Padding="5" BoxShadow="1 1 10 1 black">
+									<Border  Margin="8" Width="200" Height="250" Background="White" BorderBrush="black" BorderThickness="1" CornerRadius="10" Padding="5" BoxShadow="1 1 5 1 black">
 										<StackPanel>
 											
 											<Image Height="180" Width="180" Source="{Binding HinhAnhSP}" Stretch="UniformToFill"/>

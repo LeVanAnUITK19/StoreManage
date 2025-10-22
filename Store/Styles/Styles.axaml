@@ -14,6 +14,7 @@
 				<StackPanel Classes="style9"></StackPanel>
 				<Border Classes="style10"></Border>
 				<NumericUpDown Classes="style11"></NumericUpDown>
+				<Button Classes="style12">X</Button>
 				<TextBox>test_text_block</TextBox>
 			</StackPanel>
 		</Border>
@@ -89,6 +90,11 @@
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Background" Value="#3E68E6"/>
+	</Style>
+	<Style Selector="Button.style3:pointerover/template/ContentPresenter">
+		<Setter Property="Background" Value="#7D9BF4" />
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="HorizontalAlignment" Value="Stretch" />
 	</Style>
 	<!--Style textbox4-->
 	<Style Selector="TextBox.style4">
@@ -181,7 +187,7 @@
 			</LinearGradientBrush>
 		</Setter>
 	</Style>
-
+	<!--Style NumericUpDown 11-->
 	<Style Selector="NumericUpDown.style11" >
 		<Setter Property="Background" Value="white"/>
 		<Setter Property="FontSize" Value="25"/>
@@ -194,6 +200,18 @@
 		<Setter Property="HorizontalAlignment" Value="Left"/>
 		<Setter Property="Foreground" Value="Black"/>
 </Style>
-	
+	<Style Selector="Button.style12">
+		<Setter Property="Background" Value="White"></Setter>
+		<Setter Property="Foreground" Value="Gray"/>
+		<Setter Property="FontSize" Value="30"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="Height" Value="45"/>
+		<Setter Property="Width" Value="40"/>
+	</Style>
+	<Style Selector="Button.style12:pointerover/template/ContentPresenter">
+		<Setter Property="Background" Value="White" />
+		<Setter Property="Foreground" Value="#938E8E" />
+		<Setter Property="HorizontalAlignment" Value="Stretch" />
+	</Style>
 
 </Styles>

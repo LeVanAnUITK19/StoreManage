@@ -8,7 +8,7 @@ namespace Store.Models
 {
     public class User 
     {
-        public string    MaUser { get; set; }
+        public string    MaNV { get; set; }
         public string    TenDangNhap { get; set; }
         public string    HoTen { get; set; }
         public string    MatKhau { get; set; }
