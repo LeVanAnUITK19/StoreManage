@@ -26,17 +26,22 @@ namespace Store.ViewModels
         private ObservableCollection<KhachHang> danhSachKhachHang = new();
         [ObservableProperty]
         private ObservableCollection<SanPham> danhSachSanPham = new();
+        [ObservableProperty]
+        private ObservableCollection<User> danhSachNhanVien = new();
 
         [ObservableProperty]
         private KhachHang? khachHangDuocChon; 
         [ObservableProperty]
-        private SanPham? sanPhamDuocChon; 
+        private SanPham? sanPhamDuocChon;
+        [ObservableProperty]
+        private User? nhanVienDuocChon;
 
 
         public CreateBillWindowViewModel()
         {
             LoadKhachHang();
             LoadSanPham();
+            LoadUser();
         }
         private void LoadKhachHang()
         {
@@ -47,6 +52,11 @@ namespace Store.ViewModels
         {
             var ds1 = SanPhanService.GetAllSanPham();
             danhSachSanPham = new ObservableCollection<SanPham>(ds1);
+        }
+        private void LoadUser()
+        {
+            var ds2 = UserService.GetAllUser();
+            danhSachNhanVien = new ObservableCollection<User>(ds2);
         }
     }
 }

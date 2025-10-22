@@ -17,10 +17,9 @@
 		<!-- Cột 1: Hình ảnh -->
 		<StackPanel Grid.Column="0" Orientation="Vertical" Margin="25,200,25,200">
 			<Border Background="White" CornerRadius="20" BoxShadow="0 0 3 3 gray" Width="400" Height="400" Padding="7">
-				<Button Command="{Binding OpenFileImageCommand}">
-					<Image Source="{Binding HinhAnhDuongDan}" Stretch="UniformToFill" IsHitTestVisible="True"/>
-			    </Button>
+					<Image Source="{Binding HinhAnhSP}" Stretch="UniformToFill" IsHitTestVisible="True"/>
 			</Border>
+			 <Button Command="{Binding ThemAnhButtonCommand}" Classes="style3" Width="400" Height="60" Margin="0,30,0,0">Thêm ảnh</Button>
 		</StackPanel>
 
 		<!-- Cột 2: Thông tin sản phẩm -->
@@ -68,7 +67,7 @@
 			<TextBox Text="{Binding MoTaSP, Mode=TwoWay}" Classes="style8" Width="520" Height="200" Margin="10,0,0,0" AcceptsReturn="True" TextWrapping="Wrap"/>
 
 			<!-- Nút tạo sản phẩm -->
-			<Button Classes="style3" Height="60" Width="200" HorizontalAlignment="Center" Margin="0,40,0,0" Command="{Binding TaoSanPhamCommand}">Tạo sản phẩm</Button>
+			<Button Classes="style3" Height="60" Width="520" HorizontalAlignment="Center" Margin="0,40,0,0" Command="{Binding TaoSanPhamCommand}">Tạo sản phẩm</Button>
 		</StackPanel>
 	</Grid>
 </Window>

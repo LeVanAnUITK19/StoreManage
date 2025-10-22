@@ -24,7 +24,12 @@
 			<StackPanel Margin="30,0,20,0" Width="400">
 				<!--MaNV|Nhân Viên-->
 				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">MaNV | Nhân viên:</TextBlock>
-				<ComboBox Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="NV01 | Nguyen Cao Cuong">
+				<ComboBox  ItemsSource="{Binding DanhSachNhanVien, Mode=TwoWay}"  SelectedItem="{Binding NhanVienDuocChon, Mode=TwoWay}" Classes="style5" Width="400" Margin="0,0,0,10" PlaceholderText="NV01 | Nguyen Cao Cuong">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding MaNV_HoTen}" />
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
 				</ComboBox>
 				<!--MaKH | Khách hàng-->
 				<TextBlock Classes="style7" FontSize="25" HorizontalAlignment="Left">MaKH | Khách hàng:</TextBlock>

@@ -1,13 +1,15 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Avalonia.Controls;
+using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Store.Models;
 using Store.Services;
-using Store.Views;
+using Avalonia.Media.Imaging;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Store.ViewModels
@@ -21,8 +23,13 @@ namespace Store.ViewModels
         [ObservableProperty] private string sDT;
         [ObservableProperty] private string diaChi;
         [ObservableProperty] private DateTime? ngaySinh = DateTime.Now;
-        [ObservableProperty] private string gioiTinh;
-        [ObservableProperty] private string hinhAnh = null;
+        [ObservableProperty] private string gioiTinh = "Nam";
+
+        // ✅ đường dẫn để lưu DB
+        [ObservableProperty] private string hinhAnhPath;
+
+        // ✅ ảnh hiển thị trên UI
+        [ObservableProperty] private Bitmap hinhAnh;
 
         public ObservableCollection<string> DanhSachGioiTinh { get; } = new()
         {
@@ -30,7 +37,6 @@ namespace Store.ViewModels
             "Nữ",
             "Khác"
         };
-
 
         [RelayCommand]
         private void DangKyButton()
@@ -47,41 +53,71 @@ namespace Store.ViewModels
                     DiaChi = DiaChi,
                     NgaySinh = NgaySinh,
                     GioiTinh = GioiTinh,
-                    HinhAnh = HinhAnh
+                    HinhAnh = HinhAnhPath, // ✅ Lưu đường dẫn ảnh
+                    MaVT = "VT01"
                 };
                 UserService.InsertUser(user);
-                // Sau khi thêm thành công
-                System.Diagnostics.Debug.WriteLine($"Đã thêm sản phẩm: {HoTen}");
 
+                System.Diagnostics.Debug.WriteLine($"Đã thêm User: {HoTen}");
 
+                // Reset form
+                TenDangNhap = MatKhau = HoTen = Email = SDT = DiaChi = "";
+                NgaySinh = DateTime.Now;
+                GioiTinh = "Nam";
+                HinhAnhPath = null;
+                HinhAnh = null;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Lỗi khi tạo sản phẩm: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Lỗi khi tạo User: {ex.Message}");
             }
-            /*if (string.IsNullOrWhiteSpace(TenDangNhap) || string.IsNullOrWhiteSpace(MatKhau))
+        }
+
+        [RelayCommand]
+        public async Task ThemAnhButtonAsync()
+        {
+            var dialog = new OpenFileDialog()
             {
-                Console.WriteLine("Tên đăng nhập và mật khẩu không được để trống!");
+                Title = "Chọn ảnh đại diện",
+                AllowMultiple = false,
+                Filters =
+                {
+                    new FileDialogFilter() { Name = "Ảnh", Extensions = { "png", "jpg", "jpeg", "bmp" } }
+                }
+            };
+
+            var window = GetActiveWindow();
+            if (window == null)
+            {
+                System.Diagnostics.Debug.WriteLine("Không tìm thấy cửa sổ hoạt động để mở dialog.");
                 return;
             }
 
-            var user = new User
+            var result = await dialog.ShowAsync(window);
+            if (result != null && result.Length > 0)
             {
-                TenDangNhap = TenDangNhap,
-                MatKhau = MatKhau,
-                HoTen = HoTen,
-                Email = Email,
-                SDT = SDT,
-                DiaChi = DiaChi,
-                NgaySinh = NgaySinh,
-                GioiTinh = GioiTinh,
-                HinhAnh = HinhAnh
-            };
+                string selectedPath = result[0];
 
-            UserService.InsertUser(user);
-            Console.WriteLine("Đăng ký thành công!");    */
+                // ✅ Copy ảnh vào thư mục riêng của app (ví dụ "Images")
+                string imageDir = Path.Combine(AppContext.BaseDirectory, "Images");
+                Directory.CreateDirectory(imageDir);
+
+                string destPath = Path.Combine(imageDir, Path.GetFileName(selectedPath));
+                File.Copy(selectedPath, destPath, overwrite: true);
+
+                // ✅ Gán để hiển thị và lưu DB
+                HinhAnhPath = destPath;
+                HinhAnh = new Bitmap(destPath);
+
+                System.Diagnostics.Debug.WriteLine($"Ảnh đã chọn: {HinhAnhPath}");
+            }
         }
 
+        private Window? GetActiveWindow()
+        {
+            if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                return desktop.Windows.FirstOrDefault(w => w.IsActive);
+            return null;
+        }
     }
 }
-

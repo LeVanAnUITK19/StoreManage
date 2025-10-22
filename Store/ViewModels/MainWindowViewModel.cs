@@ -10,7 +10,7 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         var adminVM = new AdminWindowViewModel();
         var adminWindow = new AdminWindowView();
-        adminWindow.DataContext = adminVM;
+       // adminWindow.DataContext = adminVM;
         adminWindow.Show();
 
         // Đóng MainWindow hiện tại
@@ -24,9 +24,8 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void RegisterButton()
     {
-        var regis = new CreateAcountWindowView();
-        regis.DataContext = regis;
-        regis.Show();
+        CreateAcountWindowView createAcountWindowView = new CreateAcountWindowView();
+        createAcountWindowView.Show();
     }
     
 }

@@ -18,7 +18,8 @@ namespace Store.Models
         public string    GioiTinh { get; set; }
         public DateTime? NgaySinh { get; set; }
         public string    HinhAnh { get; set; }
-        public string MaVT { get; set; } = "VT01";
+        public string MaVT { get; set; }
+        public string MaNV_HoTen => $"{MaNV} | {HoTen}";
 
 
         public  User() {}
