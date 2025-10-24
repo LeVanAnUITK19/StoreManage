@@ -1,11 +1,12 @@
-﻿using Avalonia.Controls;
-using Avalonia;
+﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Store.Models;
 using Store.Services;
-using Avalonia.Media.Imaging;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -29,7 +30,7 @@ namespace Store.ViewModels
         [ObservableProperty] private string hinhAnhPath;
 
         // ✅ ảnh hiển thị trên UI
-        [ObservableProperty] private Bitmap hinhAnh;
+        [ObservableProperty] private Bitmap hinhAnh = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_2.png")));
 
         public ObservableCollection<string> DanhSachGioiTinh { get; } = new()
         {
@@ -65,7 +66,7 @@ namespace Store.ViewModels
                 NgaySinh = DateTime.Now;
                 GioiTinh = "Nam";
                 HinhAnhPath = null;
-                HinhAnh = null;
+                HinhAnh = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_2.png")));
             }
             catch (Exception ex)
             {
