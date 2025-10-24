@@ -6,7 +6,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Store.Models;
 using Store.Services;
-using Store.Services;
+using Avalonia.Platform;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -26,7 +26,7 @@ namespace Store.ViewModels
         [ObservableProperty] private string kichThuocSP = "M";
         [ObservableProperty] private string moTaSP;
         [ObservableProperty] private string hinhAnhDuongDan;
-        [ObservableProperty] private Bitmap hinhAnhSP;
+        [ObservableProperty] private Bitmap hinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png")));
         public ObservableCollection<string> DanhSachLoaiSP { get; } = new()
         {
             "Quần ngắn",
@@ -75,7 +75,10 @@ namespace Store.ViewModels
                 KichThuocSP = "";
                 MoTaSP = "";
                 HinhAnhDuongDan = "";
-                MaSP = SanPhanService.GenerateNewMaSP(); // tạo mã mới cho lần tiếp theo
+                HinhAnhSP = new Bitmap(AssetLoader.Open(new Uri("avares://Store/Assets/images/AnhMau_1.png"))
+  );
+
+
             }
             catch (Exception ex)
             {

@@ -45,12 +45,15 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 					<!--Phần 2-->
 					<Border Grid.Column="1" Background="White" CornerRadius="0,0,80,0" BoxShadow="0 0 2 2  #5C81F0">
 						<StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+
 							<TextBlock FontSize="40" FontWeight="Bold" Margin="20,100,50,0" TextAlignment="Center" Foreground="black" Text="Đăng nhập tài khoản"/>
-							<Border Height="60" Width="400" Margin="25,50,50,25" CornerRadius="10" BoxShadow="2 2 3 2 gray">
-								<TextBox Background="#D9D9D9" FontSize="30"  Watermark="Name" CornerRadius="10"/>
+							<TextBlock  Text ="{Binding KiemTraDangNhap}" Height="30" Width="400" FontSize="25" FontWeight="Bold" Foreground="red"></TextBlock>
+
+							<Border Height="60" Width="400" Margin="25,10,50,25" CornerRadius="10" BoxShadow="2 2 3 2 gray">
+								<TextBox Text="{Binding TenDangNhap}" Background="#D9D9D9" FontSize="30" Foreground="Black"  Watermark="Name" CornerRadius="10"/>
 							</Border>
 							<Border Height="60" Width="400" Margin="25,0,50,25" CornerRadius="10" BoxShadow="2 2 3 2 gray">
-								<TextBox Background="#D9D9D9" FontSize="30"  PasswordChar="*" Watermark="Password" CornerRadius="10"/>
+								<TextBox Text="{Binding MatKhau}" Background="#D9D9D9" FontSize="30"   Foreground="Black" PasswordChar="*" Watermark="Password" CornerRadius="10"/>
 							</Border>
 							<TextBlock Foreground="Red" FontSize="25" Margin="25,0,0,25">
 								Bạn quên mật khẩu?

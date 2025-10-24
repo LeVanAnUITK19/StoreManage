@@ -10,10 +10,7 @@
 
     <ItemGroup>
         <AvaloniaResource Include="Assets\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <AvaloniaResource Remove="Assets\images\Anh_Mau.png" />
+		<AvaloniaResource Include="Assets\images\AnhMau_1.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -42,13 +39,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="Assets\images\Anh_Mau.png" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <AvaloniaResource Update="Assets\images\Anh_Mau2.jpg">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </AvaloniaResource>
       <AvaloniaResource Update="Assets\images\LUCKY.svg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </AvaloniaResource>

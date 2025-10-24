@@ -29,9 +29,9 @@ namespace Store.Services
                     TenSP TEXT NOT NULL,
                     GiaSP REAL NOT NULL,
                     SoLuongSP INTEGER NOT NULL,
-                    HinhAnhDuongDan TEXT,
-                    KichThuocSP TEXT,
-                    LoaiSP TEXT,
+                    HinhAnhDuongDan TEXT NOT NULL,
+                    KichThuocSP TEXT NOT NULL,
+                    LoaiSP TEXT NOT NULL,
                     MoTaSP TEXT
                 );";
                 cmd.ExecuteNonQuery();

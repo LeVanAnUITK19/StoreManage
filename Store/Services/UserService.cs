@@ -1,9 +1,12 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using Avalonia.Media.Imaging;
+using Microsoft.Data.Sqlite;
 using Store.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Avalonia.Media.Imaging;
+using System.Security.Cryptography;
+using System.Text;
+
 
 namespace Store.Services
 {
@@ -56,7 +59,7 @@ namespace Store.Services
 
                 cmd.Parameters.AddWithValue("$MaNV", newMaNV);
                 cmd.Parameters.AddWithValue("$TenDangNhap", user.TenDangNhap);
-                cmd.Parameters.AddWithValue("$MatKhau", user.MatKhau);
+                cmd.Parameters.AddWithValue("$MatKhau", PasswordHelper.HashPassword(user.MatKhau));
                 cmd.Parameters.AddWithValue("$HoTen", user.HoTen );
                 cmd.Parameters.AddWithValue("$Email", user.Email );
                 cmd.Parameters.AddWithValue("$SDT", user.SDT );
@@ -128,5 +131,29 @@ namespace Store.Services
                 return $"NV{(number + 1):D3}";
             }
         }
+        //Hash mật khẩu
+        public static class PasswordHelper
+        {
+            public static string HashPassword(string password)
+            {
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] bytes = Encoding.UTF8.GetBytes(password);
+                    byte[] hashBytes = sha256.ComputeHash(bytes);
+                    // Chuyển sang hex string
+                    StringBuilder builder = new StringBuilder();
+                    foreach (var b in hashBytes)
+                        builder.Append(b.ToString("x2"));
+                    return builder.ToString();
+                }
+            }
+        }
+        //Kiểm tra mật khẩu khi LogIn
+        public static bool VerifyPassword(string inputPassword, string storedHash)
+        {
+            string hashOfInput = PasswordHelper.HashPassword(inputPassword);
+            return hashOfInput.Equals(storedHash, StringComparison.OrdinalIgnoreCase);
+        }
+
     }
 }
