@@ -13,12 +13,12 @@ namespace Store.Models
         public decimal  TongTienHD { get; set; }
         public decimal  GiamGiaHD { get; set; }
         public int      MaKH { get; set; }
+        public string TenKH { get; set; }
         public int      MaUser { get; set; }
+        public string TenUser { get; set; }
         public int      SoHD { get; set; }
         public string   TrangThaiHD { get; set; }
-
-        //Thêm tạm
-        public string TenKH { get; set; } 
+        
         public HoaDon() { }
     }
 }

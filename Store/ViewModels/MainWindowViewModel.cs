@@ -55,5 +55,12 @@ public partial class MainWindowViewModel : ViewModelBase
         CreateAcountWindowView createAcountWindowView = new CreateAcountWindowView();
         createAcountWindowView.Show();
     }
-    
+    [RelayCommand]
+    private void ForgotPasswordButton()
+    {
+        ForgotPasswordView forgotPasswordView = new ForgotPasswordView();
+        forgotPasswordView.Show();
+    }
+
+
 }

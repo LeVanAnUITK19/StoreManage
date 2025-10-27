@@ -61,6 +61,9 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [D:/HỌC TẬP/IT008-Lập trình trực quan/DoAn-IT008/IT008-StoreManage/Store/Views/EmployeePageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[D:/HỌC TẬP/IT008-Lập trình trực quan/DoAn-IT008/IT008-StoreManage/Store/Views/ForgotPasswordView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [D:/HỌC TẬP/IT008-Lập trình trực quan/DoAn-IT008/IT008-StoreManage/Store/Views/HistoryPageView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 

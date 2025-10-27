@@ -169,6 +169,7 @@
 		<Setter Property="HorizontalAlignment" Value="Left"/>
 		<Setter Property="Foreground" Value="Black"/>
 </Style>
+	
 	<!--Style stackpanel9-->
 	<Style Selector="StackPanel.style9">
 		<Setter Property="Background">

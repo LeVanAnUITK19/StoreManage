@@ -7,10 +7,9 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-
 namespace Store.Services
 {
-    public static class UserService 
+    public static class UserService
     {
         private static readonly string dbPath = Path.Combine(AppContext.BaseDirectory, "store.db");
 
@@ -33,17 +32,18 @@ namespace Store.Services
                     MatKhau TEXT NOT NULL,
                     HoTen TEXT NOT NULL,
                     Email TEXT NOT NULL,
-                    SDT TEXT ,
+                    SDT TEXT,
                     DiaChi TEXT NOT NULL,
-                    NgaySinh TEXT ,
-                    GioiTinh TEXT  ,
+                    NgaySinh TEXT,
+                    GioiTinh TEXT,
                     HinhAnh TEXT,
                     MaVT TEXT NOT NULL
                 );";
                 cmd.ExecuteNonQuery();
             }
         }
-        //Create
+
+        // ------------------ CREATE ------------------
         public static void InsertUser(User user)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -60,21 +60,20 @@ namespace Store.Services
                 cmd.Parameters.AddWithValue("$MaNV", newMaNV);
                 cmd.Parameters.AddWithValue("$TenDangNhap", user.TenDangNhap);
                 cmd.Parameters.AddWithValue("$MatKhau", PasswordHelper.HashPassword(user.MatKhau));
-                cmd.Parameters.AddWithValue("$HoTen", user.HoTen );
-                cmd.Parameters.AddWithValue("$Email", user.Email );
-                cmd.Parameters.AddWithValue("$SDT", user.SDT );
-                cmd.Parameters.AddWithValue("$DiaChi", user.DiaChi );
-                cmd.Parameters.AddWithValue("$NgaySinh", user.NgaySinh?.ToString("yyyy-MM-dd") );
-                cmd.Parameters.AddWithValue("$GioiTinh", user.GioiTinh );
-                cmd.Parameters.AddWithValue("$HinhAnh", user.HinhAnh );
+                cmd.Parameters.AddWithValue("$HoTen", user.HoTen);
+                cmd.Parameters.AddWithValue("$Email", user.Email);
+                cmd.Parameters.AddWithValue("$SDT", user.SDT);
+                cmd.Parameters.AddWithValue("$DiaChi", user.DiaChi);
+                cmd.Parameters.AddWithValue("$NgaySinh", user.NgaySinh?.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("$GioiTinh", user.GioiTinh);
+                cmd.Parameters.AddWithValue("$HinhAnh", user.HinhAnh);
                 cmd.Parameters.AddWithValue("$MaVT", user.MaVT);
 
                 cmd.ExecuteNonQuery();
             }
-           
         }
-        
-        // Read all users
+
+        // ------------------ READ ------------------
         public static List<User> GetAllUser()
         {
             var users = new List<User>();
@@ -83,11 +82,9 @@ namespace Store.Services
             {
                 connection.Open();
                 var cmd = connection.CreateCommand();
-
-                // ✅ Tên bảng đúng là "Users"
                 cmd.CommandText = @"
-            SELECT MaNV, TenDangNhap, MatKhau, HoTen, Email, SDT, DiaChi, NgaySinh, GioiTinh, HinhAnh, MaVT 
-            FROM Users";
+                SELECT MaNV, TenDangNhap, MatKhau, HoTen, Email, SDT, DiaChi, NgaySinh, GioiTinh, HinhAnh, MaVT 
+                FROM Users";
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -115,6 +112,76 @@ namespace Store.Services
             return users;
         }
 
+        // ------------------ UPDATE ------------------
+        public static void UpdateUser(User user, bool updatePassword = false)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+
+                // Nếu không muốn đổi mật khẩu thì bỏ qua cột MatKhau
+                cmd.CommandText = updatePassword
+                    ? @"
+                        UPDATE Users SET
+                            TenDangNhap = $TenDangNhap,
+                            MatKhau = $MatKhau,
+                            HoTen = $HoTen,
+                            Email = $Email,
+                            SDT = $SDT,
+                            DiaChi = $DiaChi,
+                            NgaySinh = $NgaySinh,
+                            GioiTinh = $GioiTinh,
+                            HinhAnh = $HinhAnh,
+                            MaVT = $MaVT
+                        WHERE MaNV = $MaNV"
+                    : @"
+                        UPDATE Users SET
+                            TenDangNhap = $TenDangNhap,
+                            HoTen = $HoTen,
+                            Email = $Email,
+                            SDT = $SDT,
+                            DiaChi = $DiaChi,
+                            NgaySinh = $NgaySinh,
+                            GioiTinh = $GioiTinh,
+                            HinhAnh = $HinhAnh,
+                            MaVT = $MaVT
+                        WHERE MaNV = $MaNV";
+
+                cmd.Parameters.AddWithValue("$MaNV", user.MaNV);
+                cmd.Parameters.AddWithValue("$TenDangNhap", user.TenDangNhap);
+                cmd.Parameters.AddWithValue("$HoTen", user.HoTen);
+                cmd.Parameters.AddWithValue("$Email", user.Email);
+                cmd.Parameters.AddWithValue("$SDT", user.SDT);
+                cmd.Parameters.AddWithValue("$DiaChi", user.DiaChi);
+                cmd.Parameters.AddWithValue("$NgaySinh", user.NgaySinh?.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("$GioiTinh", user.GioiTinh);
+                cmd.Parameters.AddWithValue("$HinhAnh", user.HinhAnh);
+                cmd.Parameters.AddWithValue("$MaVT", user.MaVT);
+
+                if (updatePassword)
+                {
+                    cmd.Parameters.AddWithValue("$MatKhau", PasswordHelper.HashPassword(user.MatKhau));
+                }
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // ------------------ DELETE ------------------
+        public static void DeleteUser(string maNV)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "DELETE FROM Users WHERE MaNV = $MaNV";
+                cmd.Parameters.AddWithValue("$MaNV", maNV);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // ------------------ AUTO ID ------------------
         public static string GenerateNewMaUser()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -131,7 +198,8 @@ namespace Store.Services
                 return $"NV{(number + 1):D3}";
             }
         }
-        //Hash mật khẩu
+
+        // ------------------ PASSWORD HELPER ------------------
         public static class PasswordHelper
         {
             public static string HashPassword(string password)
@@ -140,7 +208,6 @@ namespace Store.Services
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(password);
                     byte[] hashBytes = sha256.ComputeHash(bytes);
-                    // Chuyển sang hex string
                     StringBuilder builder = new StringBuilder();
                     foreach (var b in hashBytes)
                         builder.Append(b.ToString("x2"));
@@ -148,12 +215,12 @@ namespace Store.Services
                 }
             }
         }
-        //Kiểm tra mật khẩu khi LogIn
+
+        // ------------------ VERIFY PASSWORD ------------------
         public static bool VerifyPassword(string inputPassword, string storedHash)
         {
             string hashOfInput = PasswordHelper.HashPassword(inputPassword);
             return hashOfInput.Equals(storedHash, StringComparison.OrdinalIgnoreCase);
         }
-
     }
 }

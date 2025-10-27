@@ -62,7 +62,52 @@ namespace Store.Services
                 cmd.ExecuteNonQuery();
             }
         }
-        //Read
+
+        //Read one
+        public static SanPham GetOneSanPham(string MaSP)
+        {
+            var sanPham = new SanPham();
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT MaSP, TenSP, GiaSP, SoLuongSP, LoaiSP, KichThuocSP, MoTaSP, HinhAnhDuongDan FROM SanPham";
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var sp = new SanPham
+                        {
+                            MaSP = reader.GetString(0),
+                            TenSP = reader.IsDBNull(1) ? "" : reader.GetString(1),
+                            GiaSP = reader.IsDBNull(2) ? 1000 : reader.GetDecimal(2),
+                            SoLuongSP = reader.IsDBNull(3) ? 1 : reader.GetInt32(3),
+                            LoaiSP = reader.IsDBNull(4) ? "" : reader.GetString(4),
+                            KichThuocSP = reader.IsDBNull(5) ? "" : reader.GetString(5),
+                            MoTaSP = reader.IsDBNull(6) ? "" : reader.GetString(6),
+                        };
+
+                        if (!reader.IsDBNull(7))
+                        {
+                            try
+                            {
+                                string imagePath = reader.GetString(7);
+                                if (File.Exists(imagePath))
+                                    sp.HinhAnhSP = new Bitmap(imagePath);
+                            }
+                            catch { }
+                        }
+                        if (MaSP == sp.MaSP)
+                        {
+                            return sp;
+                        }
+                    }
+                    return null;
+                }
+            }
+        }
+        //Read All
         public static List<SanPham> GetAllSanPham()
         {
             var sanPhams = new List<SanPham>();

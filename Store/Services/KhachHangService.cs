@@ -38,7 +38,7 @@ namespace Store.Services
             }
         }
 
-        // Create
+        // ----------------- CREATE -----------------
         public static void InsertKhachHang(KhachHang kh)
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
@@ -62,7 +62,8 @@ namespace Store.Services
                 cmd.ExecuteNonQuery();
             }
         }
-        //Read
+
+        // ----------------- READ -----------------
         public static List<KhachHang> GetAllKhachHang()
         {
             var khachHangs = new List<KhachHang>();
@@ -86,9 +87,8 @@ namespace Store.Services
                             DiaChi = reader.IsDBNull(4) ? "" : reader.GetString(4),
                             Hang = reader.IsDBNull(5) ? "" : reader.GetString(5),
                             GhiChu = reader.IsDBNull(6) ? "" : reader.GetString(6),
-                            TongMua = reader.IsDBNull(7) ? 1000 : reader.GetDecimal(7),
+                            TongMua = reader.IsDBNull(7) ? 0 : reader.GetDecimal(7),
                         };
-
                         khachHangs.Add(kh);
                     }
                 }
@@ -96,7 +96,52 @@ namespace Store.Services
 
             return khachHangs;
         }
-        // Tạo MaKH mới (tăng tự động)
+
+        // ----------------- UPDATE -----------------
+        public static void UpdateKhachHang(KhachHang kh)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = @"
+                UPDATE KhachHang
+                SET TenKH = $TenKH,
+                    SDT = $SDT,
+                    GioiTinh = $GioiTinh,
+                    DiaChi = $DiaChi,
+                    Hang = $Hang,
+                    GhiChu = $GhiChu,
+                    TongMua = $TongMua
+                WHERE MaKH = $MaKH";
+
+                cmd.Parameters.AddWithValue("$MaKH", kh.MaKH);
+                cmd.Parameters.AddWithValue("$TenKH", kh.TenKH);
+                cmd.Parameters.AddWithValue("$SDT", kh.SDT);
+                cmd.Parameters.AddWithValue("$GioiTinh", kh.GioiTinh);
+                cmd.Parameters.AddWithValue("$DiaChi", kh.DiaChi);
+                cmd.Parameters.AddWithValue("$Hang", kh.Hang);
+                cmd.Parameters.AddWithValue("$GhiChu", kh.GhiChu);
+                cmd.Parameters.AddWithValue("$TongMua", (double)kh.TongMua);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // ----------------- DELETE -----------------
+        public static void DeleteKhachHang(string maKH)
+        {
+            using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+            {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = "DELETE FROM KhachHang WHERE MaKH = $MaKH";
+                cmd.Parameters.AddWithValue("$MaKH", maKH);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // ----------------- Generate ID -----------------
         public static string GenerateNewMaKH()
         {
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
