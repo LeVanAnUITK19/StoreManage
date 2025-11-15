@@ -1,0 +1,177 @@
+<Window
+Icon="/Assets/avalonia-logo.ico"
+Title="ShopQuality - Đăng nhập"
+Height="600"
+Width="900"
+WindowStartupLocation="CenterScreen"
+d:DesignHeight="600"
+d:DesignWidth="900"
+Background="Transparent"
+SystemDecorations="None"
+mc:Ignorable="d"
+x:Class="Store.Views.MainWindow"
+x:DataType="vm:MainWindowViewModel"
+xmlns="https://github.com/avaloniaui"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:vm="using:Store.ViewModels"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Border CornerRadius="16" ClipToBounds="True" BoxShadow="0 10 40 5 #30000000">
+		<Border.Background>
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+				<GradientStop Color="#F9FAFB" Offset="0"/>
+				<GradientStop Color="#F3F4F6" Offset="1"/>
+			</LinearGradientBrush>
+		</Border.Background>
+		
+		<Grid>
+			<!-- Close Button -->
+			<Button Command="{Binding $parent[Window].Close}" 
+					Classes="close-btn"
+					HorizontalAlignment="Right" 
+					VerticalAlignment="Top" 
+					Margin="0,16,16,0"
+					ZIndex="10">
+				✕
+			</Button>
+			
+			<!-- Main Content -->
+			<Grid ColumnDefinitions="*,*">
+				<!-- Left Panel - Branding -->
+				<Border Grid.Column="0" Padding="60,80">
+					<StackPanel VerticalAlignment="Center" Spacing="30">
+						<!-- Logo -->
+						<Border Background="#667EEA" 
+								CornerRadius="20" 
+								Width="80" 
+								Height="80"
+								HorizontalAlignment="Center"
+								BoxShadow="0 8 24 0 #30667EEA">
+							<TextBlock Text="🛍️" 
+									   FontSize="48" 
+									   HorizontalAlignment="Center" 
+									   VerticalAlignment="Center"/>
+						</Border>
+						
+						<!-- Title -->
+						<TextBlock 
+								   FontSize="36" 
+								   FontWeight="Bold" 
+								   Foreground="#111827"
+								   TextAlignment="Center">
+						ShopQ<Run FontSize="18">uality</Run>
+						</TextBlock>
+						
+						<!-- Subtitle -->
+						<TextBlock Text="Phần mềm quản lý bán hàng hiện đại" 
+								   FontSize="15" 
+								   Foreground="#6B7280"
+								   TextAlignment="Center"
+								   TextWrapping="Wrap"
+								   LineHeight="22"/>
+						
+						<!-- Divider -->
+						<Border Height="1" 
+								Background="#E5E7EB" 
+								Margin="40,10"/>
+						
+						<!-- Register Link -->
+						<StackPanel Spacing="12">
+							<TextBlock Text="Chưa có tài khoản?" 
+									   FontSize="14" 
+									   Foreground="#6B7280"
+									   TextAlignment="Center"/>
+							<Button Command="{Binding RegisterButtonCommand}" 
+									Classes="secondary"
+									Height="44"
+									HorizontalAlignment="Stretch">
+								Đăng ký ngay
+							</Button>
+						</StackPanel>
+					</StackPanel>
+				</Border>
+				
+				<!-- Right Panel - Login Form -->
+				<Border Grid.Column="1" 
+						Background="White" 
+						CornerRadius="0,16,16,0"
+						BoxShadow="-4 0 16 0 #10000000">
+					<StackPanel VerticalAlignment="Center" 
+								Margin="60,0"
+								Spacing="20">
+						<!-- Header -->
+						<StackPanel Spacing="8" Margin="0,0,0,16">
+							<TextBlock Text="Đăng nhập" 
+									   FontSize="28" 
+									   FontWeight="Bold" 
+									   Foreground="#111827"/>
+							<TextBlock Text="Nhập thông tin để tiếp tục" 
+									   FontSize="14" 
+									   Foreground="#6B7280"/>
+						</StackPanel>
+						
+						<!-- Error Message -->
+						<Border Background="#FEE2E2" 
+								BorderBrush="#EF4444" 
+								BorderThickness="1"
+								CornerRadius="8"
+								Padding="12"
+								IsVisible="{Binding KiemTraDangNhap, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+							<TextBlock Text="{Binding KiemTraDangNhap}" 
+									   FontSize="13" 
+									   Foreground="#DC2626"
+									   TextWrapping="Wrap"/>
+						</Border>
+						
+						<!-- Username Input -->
+						<StackPanel Spacing="6">
+							<TextBlock Text="Tên đăng nhập" 
+									   Classes="label"/>
+							<TextBox Text="{Binding TenDangNhap}" 
+									 Classes="modern-input"
+									 Watermark="Nhập tên đăng nhập"/>
+						</StackPanel>
+						
+						<!-- Password Input -->
+						<StackPanel Spacing="6">
+							<TextBlock Text="Mật khẩu" 
+									   Classes="label"/>
+							<TextBox Text="{Binding MatKhau}" 
+									 Classes="modern-input"
+									 PasswordChar="●" 
+									 Watermark="Nhập mật khẩu"/>
+						</StackPanel>
+						
+						<!-- Forgot Password -->
+						<Button Command="{Binding ForgotPasswordButtonCommand}" 
+								Background="Transparent"
+								BorderThickness="0"
+								Foreground="#667EEA" 
+								FontSize="13"
+								HorizontalAlignment="Right"
+								Padding="0"
+								Cursor="Hand">
+							<Button.Styles>
+								<Style Selector="Button:pointerover">
+									<Setter Property="Foreground" Value="#5568D3"/>
+								</Style>
+							</Button.Styles>
+							Quên mật khẩu?
+						</Button>
+						
+						<!-- Login Button -->
+						<Button Command="{Binding LogInButtonCommand}" 
+								Classes="primary"
+								Height="44"
+								FontSize="15"
+								Margin="0,8,0,0"
+								HorizontalAlignment="Stretch">
+							Đăng nhập
+						</Button>
+					</StackPanel>
+				</Border>
+			</Grid>
+		</Grid>
+	</Border>
+</Window>
